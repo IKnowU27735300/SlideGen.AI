@@ -106,5 +106,5 @@
 <br />
 
 <div align="center">
-  <sub>Built by Anish</sub>
+  <sub>Built by Anish Tanaji Inamadar </sub>
 </div>
