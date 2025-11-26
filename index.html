@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI PPT Designer | Premium Presentation Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- PptxGenJS -->
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+    <!-- JSZip -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <header>
+        <nav class="glass-nav">
+            <div class="logo">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span>SlideGen.AI</span>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="active">Create</a>
+                <a href="#templates-section">AI Templates</a>
+            </div>
+            <!-- Removed Sign In and Pricing -->
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Design Stunning Presentations <br><span class="gradient-text">In Seconds</span></h1>
+            <p class="subtitle">Paste your content, and let our AI generate unlimited premium designs for you.</p>
+        </section>
+
+        <div class="app-container">
+            <!-- Input Section -->
+            <section class="input-panel glass-panel">
+                <div class="panel-header">
+                    <h2><i class="fa-regular fa-file-lines"></i> Content</h2>
+                    <span class="badge">Step 1</span>
+                </div>
+
+                <!-- Upload Zone -->
+                <div class="upload-zone" id="drop-zone">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <p>Drag & Drop your existing PPTX here</p>
+                    <span class="or-divider">OR</span>
+                    <label for="file-upload" class="btn-secondary small">Browse File</label>
+                    <input type="file" id="file-upload" accept=".pptx" hidden>
+                </div>
+                
+                <div class="form-group">
+                    <label for="presentation-title">Presentation Title</label>
+                    <input type="text" id="presentation-title" placeholder="e.g., The Future of AI in Healthcare" value="The Future of AI">
+                </div>
+
+                <div class="form-group">
+                    <label for="presentation-subtitle">Subtitle / Author</label>
+                    <input type="text" id="presentation-subtitle" placeholder="e.g., By Dr. Jane Doe" value="By John Doe">
+                </div>
+
+                <div class="slides-input-container" id="slides-container">
+                    <!-- Dynamic Slide Inputs will go here -->
+                    <div class="slide-input-group" data-slide-id="1">
+                        <div class="slide-header">
+                            <span>Slide 1</span>
+                            <button class="btn-icon delete-slide" title="Remove Slide"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                        <input type="text" class="slide-title" placeholder="Slide Title" value="Introduction">
+                        <textarea class="slide-content" placeholder="Bullet points (one per line)"></textarea>
+                    </div>
+                </div>
+
+                <button id="add-slide-btn" class="btn-secondary full-width"><i class="fa-solid fa-plus"></i> Add Slide</button>
+                
+                <div class="action-area">
+                    <button id="generate-btn" class="btn-primary full-width glow-effect">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Design PPT
+                    </button>
+                </div>
+            </section>
+
+            <!-- Preview Section -->
+            <section class="preview-panel glass-panel">
+                <div class="panel-header">
+                    <h2><i class="fa-solid fa-desktop"></i> Live Preview</h2>
+                    <div class="controls">
+                        <button id="regenerate-btn" class="btn-secondary small" disabled>
+                            <i class="fa-solid fa-rotate"></i> Remix Design
+                        </button>
+                        <button id="download-btn" class="btn-success small" disabled>
+                            <i class="fa-solid fa-download"></i> Download PPTX
+                        </button>
+                    </div>
+                </div>
+
+                <div class="preview-viewport" id="preview-viewport">
+                    <div class="empty-state">
+                        <i class="fa-solid fa-layer-group"></i>
+                        <p>Enter content and click "Design PPT" to see magic happen.</p>
+                    </div>
+                    <!-- Generated Slides will be injected here -->
+                </div>
+                
+                <div class="slide-navigation" id="slide-nav" style="display: none;">
+                    <button id="prev-slide" class="nav-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                    <span id="slide-counter">1 / 1</span>
+                    <button id="next-slide" class="nav-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </section>
+        </div>
+
+        <!-- AI Templates Section -->
+        <section id="templates-section" class="templates-container">
+            <h2 class="section-title">Choose from <span class="gradient-text">Trending AI Styles</span></h2>
+            <div class="templates-grid" id="templates-grid">
+                <!-- Templates injected by JS -->
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
