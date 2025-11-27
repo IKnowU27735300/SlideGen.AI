@@ -8,7 +8,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <!-- PptxGenJS -->
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
     <!-- JSZip -->
@@ -70,19 +70,34 @@
                     <input type="text" id="presentation-subtitle" placeholder="e.g., By Dr. Jane Doe" value="By John Doe">
                 </div>
 
-                <div class="slides-input-container" id="slides-container">
-                    <!-- Dynamic Slide Inputs will go here -->
-                    <div class="slide-input-group" data-slide-id="1">
-                        <div class="slide-header">
-                            <span>Slide 1</span>
-                            <button class="btn-icon delete-slide" title="Remove Slide"><i class="fa-solid fa-trash"></i></button>
-                        </div>
-                        <input type="text" class="slide-title" placeholder="Slide Title" value="Introduction">
-                        <textarea class="slide-content" placeholder="Bullet points (one per line)"></textarea>
-                    </div>
+                <div class="form-group">
+                    <label for="slide-count">Number of Slides</label>
+                    <input type="number" id="slide-count" min="1" max="20" value="3" placeholder="e.g., 5">
+                    <span class="helper-text">AI will automatically split your content into this many slides</span>
                 </div>
 
-                <button id="add-slide-btn" class="btn-secondary full-width"><i class="fa-solid fa-plus"></i> Add Slide</button>
+                <div class="form-group content-input-area">
+                    <label for="presentation-content">Your Presentation Content</label>
+                    <textarea id="presentation-content" class="main-content-textarea" placeholder="Paste all your content here. The AI will intelligently split it into slides.
+
+Tips for best results:
+• Use clear section headers (e.g., 'Introduction:', 'Key Benefits:')
+• Separate topics with blank lines
+• Use bullet points for lists
+• The AI will detect structure and create appropriate slide titles
+
+Example:
+Introduction to AI
+Artificial intelligence is transforming industries
+Machine learning enables computers to learn
+Deep learning uses neural networks
+
+Benefits of AI
+Increased efficiency and automation
+Better decision making with data
+Cost reduction in operations"></textarea>
+                    <span class="helper-text"><i class="fa-solid fa-wand-magic-sparkles"></i> AI will analyze your content and create slide headers and bodies automatically</span>
+                </div>
                 
                 <div class="action-area">
                     <button id="generate-btn" class="btn-primary full-width glow-effect">
