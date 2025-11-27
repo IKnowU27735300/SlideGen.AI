@@ -23,11 +23,12 @@
 
 body {
     font-family: var(--font-main);
-    background-color: var(--bg-dark);
+    background-color: #0a0e1a;
     color: var(--text-main);
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
+    padding-top: 70px; /* Account for fixed header */
 }
 
 /* Background Blobs */
@@ -39,6 +40,33 @@ body {
     height: 100%;
     z-index: -1;
     overflow: hidden;
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+}
+
+/* Add gradient mesh overlay */
+.background-blobs::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.1) 0%, transparent 50%);
+    animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
 }
 
 .blob {
@@ -47,6 +75,7 @@ body {
     filter: blur(80px);
     opacity: 0.4;
     animation: float 20s infinite alternate;
+    mix-blend-mode: screen;
 }
 
 .blob-1 {
@@ -54,7 +83,8 @@ body {
     left: -10%;
     width: 50vw;
     height: 50vw;
-    background: #4f46e5;
+    background: radial-gradient(circle, #6366f1 0%, #4f46e5 50%, transparent 70%);
+    animation: float 25s infinite alternate, rotate 30s linear infinite;
 }
 
 .blob-2 {
@@ -62,7 +92,8 @@ body {
     right: -10%;
     width: 40vw;
     height: 40vw;
-    background: #c026d3;
+    background: radial-gradient(circle, #a855f7 0%, #c026d3 50%, transparent 70%);
+    animation: float 20s infinite alternate, rotate 25s linear infinite reverse;
     animation-delay: -5s;
 }
 
@@ -71,13 +102,33 @@ body {
     left: 40%;
     width: 30vw;
     height: 30vw;
-    background: #0891b2;
+    background: radial-gradient(circle, #0ea5e9 0%, #0891b2 50%, transparent 70%);
+    animation: float 22s infinite alternate, rotate 28s linear infinite;
     animation-delay: -10s;
 }
 
-@keyframes float {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(30px, 50px) scale(1.1); }
+/* Additional decorative blobs */
+.background-blobs::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    right: 20%;
+    width: 25vw;
+    height: 25vw;
+    background: radial-gradient(circle, rgba(236, 72, 153, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(60px);
+    animation: float 18s infinite alternate, pulse 8s ease-in-out infinite;
+    animation-delay: -3s;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* Header */
@@ -89,8 +140,11 @@ body {
     background: rgba(15, 23, 42, 0.6);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--glass-border);
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
     z-index: 100;
 }
 
@@ -106,6 +160,7 @@ body {
 
 .logo i {
     background: var(--gradient-1);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -214,6 +269,7 @@ body {
 
 .gradient-text {
     background: var(--gradient-1);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -409,6 +465,38 @@ input:focus, textarea:focus {
 #add-slide-btn {
     margin: 0 1.5rem 1.5rem;
     width: calc(100% - 3rem);
+}
+
+/* AI Content Analysis Styles */
+.content-input-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content-textarea {
+    min-height: 300px;
+    flex: 1;
+    resize: vertical;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.helper-text {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+.helper-text i {
+    color: var(--primary);
+    margin-right: 0.25rem;
+}
+
+#slide-count {
+    max-width: 150px;
 }
 
 /* Preview Section */
@@ -645,4 +733,356 @@ input:focus, textarea:focus {
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.1);
     color: var(--text-muted);
+}
+
+/* ========================================
+   ANIMATIONS & EFFECTS
+   ======================================== */
+
+/* Fade in animation for elements */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Apply animations to elements */
+.hero {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.hero h1 {
+    animation: fadeInUp 1s ease-out 0.2s backwards;
+}
+
+.hero .subtitle {
+    animation: fadeInUp 1s ease-out 0.4s backwards;
+}
+
+.app-container {
+    animation: fadeInUp 1s ease-out 0.6s backwards;
+}
+
+.input-panel {
+    animation: slideInLeft 0.8s ease-out 0.8s backwards;
+}
+
+.preview-panel {
+    animation: slideInRight 0.8s ease-out 0.8s backwards;
+}
+
+.templates-container {
+    animation: fadeIn 1s ease-out 1s backwards;
+}
+
+.template-card {
+    animation: scaleIn 0.5s ease-out backwards;
+}
+
+.template-card:nth-child(1) { animation-delay: 0.1s; }
+.template-card:nth-child(2) { animation-delay: 0.15s; }
+.template-card:nth-child(3) { animation-delay: 0.2s; }
+.template-card:nth-child(4) { animation-delay: 0.25s; }
+.template-card:nth-child(5) { animation-delay: 0.3s; }
+.template-card:nth-child(6) { animation-delay: 0.35s; }
+.template-card:nth-child(7) { animation-delay: 0.4s; }
+.template-card:nth-child(8) { animation-delay: 0.45s; }
+.template-card:nth-child(9) { animation-delay: 0.5s; }
+
+/* Enhanced button animations */
+.btn-primary, .btn-secondary, .btn-success {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary::before, .btn-secondary::before, .btn-success::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-primary:hover::before, .btn-secondary:hover::before, .btn-success:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-primary:active, .btn-secondary:active, .btn-success:active {
+    transform: translateY(-2px) scale(0.98);
+}
+
+/* Enhanced input focus effects */
+input:focus, textarea:focus {
+    transform: scale(1.01);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* Smooth transitions for all interactive elements */
+a, button, input, textarea, .template-card, .slide-input-group {
+    transition: all 0.3s ease;
+}
+
+/* Logo animation */
+.logo {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.logo i {
+    display: inline-block;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Nav links hover effect */
+.nav-links a {
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after, .nav-links a.active::after {
+    width: 100%;
+}
+
+/* Form group stagger animation */
+.form-group {
+    animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.form-group:nth-child(1) { animation-delay: 0.1s; }
+.form-group:nth-child(2) { animation-delay: 0.2s; }
+.form-group:nth-child(3) { animation-delay: 0.3s; }
+.form-group:nth-child(4) { animation-delay: 0.4s; }
+
+/* Upload zone hover effect */
+.upload-zone {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.upload-zone:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    background: rgba(99, 102, 241, 0.05);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+}
+
+/* Slide preview transition */
+.slide-preview {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.slide-preview.hidden {
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+/* Panel header animation */
+.panel-header {
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* Badge pulse effect */
+.badge {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Helper text fade in */
+.helper-text {
+    animation: fadeIn 0.8s ease-out 0.5s backwards;
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Gradient text shimmer effect */
+@keyframes shimmer {
+    0% {
+        background-position: -100% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.gradient-text {
+    background-size: 200% auto;
+    animation: shimmer 3s linear infinite;
+}
+
+/* Empty state animation */
+.empty-state {
+    animation: fadeIn 1s ease-out;
+}
+
+.empty-state i {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Slide navigation buttons */
+.nav-btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-btn:hover:not(:disabled) {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+}
+
+.nav-btn:active:not(:disabled) {
+    transform: scale(0.95);
+}
+
+/* Controls animation */
+.controls {
+    animation: fadeIn 0.8s ease-out 1s backwards;
+}
+
+/* Section title animation */
+.section-title {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Blob animations - enhanced */
+.blob {
+    animation: float 20s infinite alternate ease-in-out;
+}
+
+@keyframes float {
+    0% { 
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% { 
+        transform: translate(50px, 80px) scale(1.15) rotate(180deg);
+        opacity: 0.3;
+    }
+}
+
+/* Glow effect enhancement */
+.glow-effect {
+    animation: pulse 2s infinite, glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(99, 102, 241, 0.8), 0 0 60px rgba(99, 102, 241, 0.4);
+    }
+}
+
+/* Loading animation for buttons */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Hover lift effect for cards */
+.glass-panel:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Slide input group hover */
+.slide-input-group:hover {
+    transform: translateX(5px);
+    box-shadow: -3px 0 0 var(--primary);
+}
+
+/* Icon animations */
+i {
+    transition: transform 0.3s ease;
+}
+
+button:hover i {
+    transform: scale(1.1);
+}
+
+/* Responsive animations - reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
