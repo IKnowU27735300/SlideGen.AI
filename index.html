@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI PPT Designer | Premium Presentation Generator</title>
+    <title>SlideGen.AI | 100% On-Device AI Presentation Studio</title>
     <link rel="stylesheet" href="style.css">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Raleway:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <!-- PptxGenJS -->
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
     <!-- JSZip -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <!-- Chart.js for Live Preview Charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Mermaid.js for Diagrams & Flowcharts -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -23,128 +27,571 @@
         <div class="blob blob-3"></div>
     </div>
 
-    <header>
+    <!-- Header Navigation -->
+    <header class="no-print">
         <nav class="glass-nav">
             <div class="logo">
                 <i class="fa-solid fa-wand-magic-sparkles"></i>
                 <span>SlideGen.AI</span>
+                <span class="logo-sub">STUDIO PRO</span>
             </div>
             <div class="nav-links">
-                <a href="#" class="active">Create</a>
-                <a href="#templates-section">AI Templates</a>
+                <a href="#" class="active"><i class="fa-solid fa-layer-group"></i> Studio</a>
+                <a href="#templates-section"><i class="fa-solid fa-palette"></i> 62 AI Themes</a>
             </div>
-            <!-- Removed Sign In and Pricing -->
+            <div class="nav-actions">
+                <div class="privacy-badge" id="privacy-badge" title="All AI generation runs 100% locally on your machine. Zero cloud data transmission.">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span id="privacy-status-text">100% Local AI</span>
+                    <span class="status-dot"></span>
+                </div>
+                <button id="ai-settings-btn" class="btn-secondary small engine-btn" title="Configure Local AI Engine">
+                    <i class="fa-solid fa-microchip"></i>
+                    <span id="current-engine-label">Engine: Auto</span>
+                </button>
+            </div>
         </nav>
     </header>
 
     <main>
-        <section class="hero">
-            <h1>Design Stunning Presentations <br><span class="gradient-text">In Seconds</span></h1>
-            <p class="subtitle">Paste your content, and let our AI generate unlimited premium designs for you.</p>
+        <!-- Hero Banner -->
+        <section class="hero no-print">
+            <div class="privacy-pill">
+                <i class="fa-solid fa-lock"></i> 100% On-Device AI • Zero Cloud Leakage • Visuals, Diagrams, Bento & KPIs
+            </div>
+            <h1>Design Stunning Presentations <br><span class="gradient-text">In Seconds with Local AI</span></h1>
+            <p class="subtitle">Turn topics, notes, or uploaded PPTX decks into presentation masterpieces on your own hardware.</p>
         </section>
 
+        <!-- Main Studio App Container -->
         <div class="app-container">
-            <!-- Input Section -->
-            <section class="input-panel glass-panel">
+            <!-- Left Panel: Dual Ingestion & Controls -->
+            <section class="input-panel glass-panel no-print">
                 <div class="panel-header">
-                    <h2><i class="fa-regular fa-file-lines"></i> Content</h2>
-                    <span class="badge">Step 1</span>
+                    <h2><i class="fa-regular fa-compass"></i> Create Presentation</h2>
+                    <span class="badge" id="active-engine-badge"><i class="fa-solid fa-bolt"></i> Local Engine</span>
                 </div>
 
-                <!-- Upload Zone -->
-                <div class="upload-zone" id="drop-zone">
-                    <i class="fa-solid fa-cloud-arrow-up"></i>
-                    <p>Drag & Drop your existing PPTX here</p>
-                    <span class="or-divider">OR</span>
-                    <label for="file-upload" class="btn-secondary small">Browse File</label>
-                    <input type="file" id="file-upload" accept=".pptx" hidden>
+                <!-- Input Pathway Tabs -->
+                <div class="input-tabs">
+                    <button class="tab-btn active" data-tab="tab-topic">
+                        <i class="fa-solid fa-lightbulb"></i> Topic / Title
+                    </button>
+                    <button class="tab-btn" data-tab="tab-notes">
+                        <i class="fa-solid fa-align-left"></i> Notes / Outline
+                    </button>
+                    <button class="tab-btn" data-tab="tab-upload">
+                        <i class="fa-solid fa-file-powerpoint"></i> Upload PPTX
+                    </button>
+                </div>
+
+                <!-- Tab 1: Topic Name / Concept Expander -->
+                <div class="tab-content active" id="tab-topic">
+                    <div class="form-group">
+                        <label for="presentation-title">Presentation Topic / Title</label>
+                        <input type="text" id="presentation-title" placeholder="e.g., Quantum Computing Breakthroughs" value="The Future of AI in Healthcare">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="presentation-subtitle">Subtitle / Context</label>
+                        <input type="text" id="presentation-subtitle" placeholder="e.g., Strategic Analysis & Clinical Roadmap" value="Strategic Analysis & Clinical Roadmap">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Quick Inspiration Topics</label>
+                        <div class="topic-pills">
+                            <button type="button" class="pill-btn" data-topic="Autonomous Vehicles & Robotics" data-subtitle="Market Landscape & Sensor Fusion" data-persona="technical">🚗 Autonomous Vehicles</button>
+                            <button type="button" class="pill-btn" data-topic="SaaS Seed Investor Pitch" data-subtitle="Product Traction & Financial Model" data-persona="pitch">🚀 Seed Pitch Deck</button>
+                            <button type="button" class="pill-btn" data-topic="Enterprise Cybersecurity 2026" data-subtitle="Zero Trust Architecture & Threat Intel" data-persona="business">🛡️ Cybersecurity</button>
+                            <button type="button" class="pill-btn" data-topic="Clean Energy & Decarbonization" data-subtitle="Grid Modernization & Global Transition" data-persona="educational">⚡ Clean Energy</button>
+                            <button type="button" class="pill-btn" data-topic="Next-Gen Fintech & Crypto" data-subtitle="DeFi Infrastructure & Global Payments" data-persona="pitch">💳 Fintech Frontier</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Raw Notes / Outline Input -->
+                <div class="tab-content" id="tab-notes">
+                    <div class="form-group content-input-area">
+                        <div class="label-with-action">
+                            <label for="presentation-content">Source Content or Raw Notes</label>
+                            <button type="button" class="btn-text-action" id="insert-sample-btn">
+                                <i class="fa-solid fa-wand-magic"></i> Load Sample Outline
+                            </button>
+                        </div>
+                        <textarea id="presentation-content" class="main-content-textarea" placeholder="Paste your raw notes, document paragraphs, bullet points, or outline here.
+
+The Local AI will analyze the content on your device and synthesize high-impact slides, takeaways, and presenter notes."></textarea>
+                    </div>
+                </div>
+
+                <!-- Tab 3: PPTX File Upload & Decompiler -->
+                <div class="tab-content" id="tab-upload">
+                    <div class="upload-zone" id="drop-zone">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <p><strong>Drag & Drop your PPTX file here</strong></p>
+                        <span class="upload-hint">Extracts text, outlines & speaker notes for instant AI restyling</span>
+                        <span class="or-divider">OR</span>
+                        <label for="file-upload" class="btn-secondary small">Browse File</label>
+                        <input type="file" id="file-upload" accept=".pptx" hidden>
+                    </div>
+                    <div id="upload-file-info" class="file-info-badge" style="display: none;">
+                        <i class="fa-solid fa-file-lines"></i> <span id="upload-file-name">deck.pptx</span>
+                    </div>
+                </div>
+
+                <!-- Shared Presentation Settings -->
+                <div class="shared-settings">
+                    <div class="form-row">
+                        <div class="form-group flex-1">
+                            <label for="slide-count">Target Slides</label>
+                            <input type="number" id="slide-count" min="1" max="20" value="5" placeholder="5">
+                        </div>
+                        <div class="form-group flex-2">
+                            <label for="deck-persona">Presentation Persona</label>
+                            <select id="deck-persona" class="styled-select">
+                                <option value="business">💼 Executive & Business</option>
+                                <option value="pitch">🚀 Investor Pitch Deck</option>
+                                <option value="technical">🔬 Technical & Architecture</option>
+                                <option value="educational">🎓 Educational & Workshop</option>
+                                <option value="creative">🎨 Creative & Storytelling</option>
+                                <option value="minimalist">✨ Minimalist & Modern</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- AI Visuals & Diagram Generator Options -->
+                    <div class="form-group visual-options-group">
+                        <div class="visual-toggle-header">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="generate-visuals-chk" checked>
+                                <span class="checkbox-label highlight-label">
+                                    <i class="fa-solid fa-images"></i> Generate Visuals & Diagrams
+                                </span>
+                            </label>
+                        </div>
+                        <div class="visual-style-row" id="visual-style-container">
+                            <label for="visual-style-select">Visual Generator Mode</label>
+                            <select id="visual-style-select" class="styled-select small-select full-width">
+                                <option value="smart-auto">✨ Smart Adaptive (AI Diagrams & Concept Visuals)</option>
+                                <option value="diagrams">📊 Flowcharts & Architecture Diagrams (Mermaid)</option>
+                                <option value="vector-art">🎨 Modern Procedural Vector & Concept Art</option>
+                                <option value="stock-visuals">🖼️ High-Impact Visual Backdrops</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="options-row space-between">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="generate-notes-chk" checked>
+                                <span class="checkbox-label"><i class="fa-solid fa-microphone-lines"></i> Speaker Notes</span>
+                            </label>
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="auto-layout-chk" checked>
+                                <span class="checkbox-label"><i class="fa-solid fa-shapes"></i> Auto Smart Layouts</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Processing Progress Bar -->
+                <div class="ai-status-container" id="ai-status-container" style="display: none;">
+                    <div class="ai-status-header">
+                        <span id="ai-status-message"><i class="fa-solid fa-circle-notch fa-spin"></i> Local AI synthesizing deck...</span>
+                        <span id="ai-status-percent">0%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="ai-progress-bar" style="width: 0%;"></div>
+                    </div>
                 </div>
                 
-                <div class="form-group">
-                    <label for="presentation-title">Presentation Title</label>
-                    <input type="text" id="presentation-title" placeholder="e.g., The Future of AI in Healthcare" value="The Future of AI">
-                </div>
-
-                <div class="form-group">
-                    <label for="presentation-subtitle">Subtitle / Author</label>
-                    <input type="text" id="presentation-subtitle" placeholder="e.g., By Dr. Jane Doe" value="By John Doe">
-                </div>
-
-                <div class="form-group">
-                    <label for="slide-count">Number of Slides</label>
-                    <input type="number" id="slide-count" min="1" max="20" value="3" placeholder="e.g., 5">
-                    <span class="helper-text">AI will automatically split your content into this many slides</span>
-                </div>
-
-                <div class="form-group content-input-area">
-                    <label for="presentation-content">Your Presentation Content</label>
-                    <textarea id="presentation-content" class="main-content-textarea" placeholder="Paste all your content here. The AI will intelligently split it into slides.
-
-Tips for best results:
-• Use clear section headers (e.g., 'Introduction:', 'Key Benefits:')
-• Separate topics with blank lines
-• Use bullet points for lists
-• The AI will detect structure and create appropriate slide titles
-
-Example:
-Introduction to AI
-Artificial intelligence is transforming industries
-Machine learning enables computers to learn
-Deep learning uses neural networks
-
-Benefits of AI
-Increased efficiency and automation
-Better decision making with data
-Cost reduction in operations"></textarea>
-                    <span class="helper-text"><i class="fa-solid fa-wand-magic-sparkles"></i> AI will analyze your content and create slide headers and bodies automatically</span>
-                </div>
-                
+                <!-- Action Button -->
                 <div class="action-area">
                     <button id="generate-btn" class="btn-primary full-width glow-effect">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i> Design PPT
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Presentation Locally
                     </button>
                 </div>
             </section>
 
-            <!-- Preview Section -->
+            <!-- Right Panel: Interactive Slide Studio -->
             <section class="preview-panel glass-panel">
-                <div class="panel-header">
-                    <h2><i class="fa-solid fa-desktop"></i> Live Preview</h2>
+                <!-- Studio Header & Action Controls -->
+                <div class="panel-header no-print">
+                    <h2><i class="fa-solid fa-desktop"></i> Interactive Slide Studio</h2>
                     <div class="controls">
-                        <button id="regenerate-btn" class="btn-secondary small" disabled>
-                            <i class="fa-solid fa-rotate"></i> Remix Design
+                        <button id="present-btn" class="btn-secondary small" disabled title="Start Full-Screen Presenter Mode">
+                            <i class="fa-solid fa-expand"></i> Present
                         </button>
-                        <button id="download-btn" class="btn-success small" disabled>
-                            <i class="fa-solid fa-download"></i> Download PPTX
+                        <button id="regenerate-btn" class="btn-secondary small" disabled title="Switch to another visual template">
+                            <i class="fa-solid fa-shuffle"></i> Remix Theme
+                        </button>
+                        
+                        <!-- Export Multi-Button Dropdown -->
+                        <div class="export-dropdown-container">
+                            <button id="download-btn" class="btn-success small" disabled title="Download PPTX">
+                                <i class="fa-solid fa-download"></i> Download PPTX
+                            </button>
+                            <button id="export-more-btn" class="btn-success small icon-only" disabled title="More Export Formats">
+                                <i class="fa-solid fa-caret-down"></i>
+                            </button>
+                            <div class="export-menu" id="export-menu" style="display: none;">
+                                <button type="button" class="export-item" id="export-pptx-item"><i class="fa-solid fa-file-powerpoint"></i> PowerPoint (.pptx)</button>
+                                <button type="button" class="export-item" id="export-pdf-item"><i class="fa-solid fa-file-pdf"></i> Print / Save as PDF</button>
+                                <button type="button" class="export-item" id="export-html-item"><i class="fa-solid fa-file-code"></i> Standalone Web Deck (.html)</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Per-Slide Studio Toolbar (Visible when slides exist) -->
+                <div class="slide-studio-toolbar no-print" id="studio-toolbar" style="display: none;">
+                    <div class="toolbar-left">
+                        <span class="toolbar-label"><i class="fa-solid fa-pen-ruler"></i> Slide Layout:</span>
+                        <select id="slide-layout-select" class="styled-select small-select">
+                            <option value="standard">Standard (Header + Bullets)</option>
+                            <option value="bento">🍱 Bento Grid (Modern Cards)</option>
+                            <option value="kpi">📊 KPI / Metric Showcase</option>
+                            <option value="diagram">📊 Architecture & Flow Diagram</option>
+                            <option value="image-split">🖼️ Visual Feature / Image Split</option>
+                            <option value="chart">📈 Native Chart (Bar / Line / Donut)</option>
+                            <option value="timeline">⏳ Process & Timeline</option>
+                            <option value="comparison">⚖️ Comparison Matrix</option>
+                            <option value="team">👥 Team & Leadership</option>
+                            <option value="split">↔️ Split Layout (2 Columns)</option>
+                            <option value="sidebar">📑 Sidebar Layout</option>
+                            <option value="centered">🎯 Centered Showcase</option>
+                            <option value="quote">💬 Quote & Mission</option>
+                        </select>
+
+                        <!-- Custom Accent Picker -->
+                        <div class="custom-accent-wrapper" title="Customize Accent Color">
+                            <label for="custom-accent-color" class="accent-color-label">
+                                <span class="accent-swatch" id="accent-swatch-preview"></span>
+                                <input type="color" id="custom-accent-color" value="#6366f1">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="toolbar-right">
+                        <button id="edit-visual-btn" class="toolbar-btn highlight-btn" title="Edit Diagram or Swap Image">
+                            <i class="fa-solid fa-wand-magic"></i>
+                        </button>
+                        <button id="move-slide-left-btn" class="toolbar-btn" title="Move Slide Earlier (Left)">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                        <button id="move-slide-right-btn" class="toolbar-btn" title="Move Slide Later (Right)">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                        <button id="duplicate-slide-btn" class="toolbar-btn" title="Duplicate this slide">
+                            <i class="fa-solid fa-copy"></i>
+                        </button>
+                        <button id="add-new-slide-btn" class="toolbar-btn" title="Add blank slide">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                        <button id="delete-slide-btn" class="toolbar-btn text-danger" title="Delete this slide">
+                            <i class="fa-solid fa-trash-can"></i>
                         </button>
                     </div>
                 </div>
 
+                <!-- Live WYSIWYG Viewport -->
                 <div class="preview-viewport" id="preview-viewport">
                     <div class="empty-state">
                         <i class="fa-solid fa-layer-group"></i>
-                        <p>Enter content and click "Design PPT" to see magic happen.</p>
+                        <h3>Your Slide Studio is Ready</h3>
+                        <p>Enter a topic or paste content on the left, then click <strong>"Generate Presentation Locally"</strong>.</p>
+                        <div class="empty-privacy-note">
+                            <i class="fa-solid fa-shield-check"></i> 100% processed on your machine's CPU/GPU • Zero cloud transmission
+                        </div>
                     </div>
-                    <!-- Generated Slides will be injected here -->
+                    <!-- Generated Slides will be injected here with contenteditable -->
+                </div>
+
+                <!-- Slide Thumbnails Strip -->
+                <div class="slide-thumbnails-strip no-print" id="thumbnails-strip" style="display: none;">
+                    <!-- Thumbnails generated dynamically by JS -->
                 </div>
                 
-                <div class="slide-navigation" id="slide-nav" style="display: none;">
-                    <button id="prev-slide" class="nav-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                <!-- Bottom Slide Navigation -->
+                <div class="slide-navigation no-print" id="slide-nav" style="display: none;">
+                    <button id="prev-slide" class="nav-btn" title="Previous Slide (Left Arrow)"><i class="fa-solid fa-chevron-left"></i></button>
                     <span id="slide-counter">1 / 1</span>
-                    <button id="next-slide" class="nav-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                    <button id="next-slide" class="nav-btn" title="Next Slide (Right Arrow)"><i class="fa-solid fa-chevron-right"></i></button>
+                    <button id="toggle-notes-btn" class="btn-secondary small notes-toggle-btn" title="Toggle Speaker Notes Drawer">
+                        <i class="fa-solid fa-note-sticky"></i> Speaker Notes
+                    </button>
+                </div>
+
+                <!-- Speaker Notes Drawer -->
+                <div class="speaker-notes-drawer no-print" id="speaker-notes-drawer" style="display: none;">
+                    <div class="notes-header">
+                        <h4><i class="fa-solid fa-microphone-lines"></i> Presenter Notes (Embedded into PPTX)</h4>
+                        <span class="notes-tip">Click to edit notes directly</span>
+                    </div>
+                    <div class="notes-body" id="speaker-notes-content" contenteditable="true">
+                        <em>No speaker notes for this slide.</em>
+                    </div>
                 </div>
             </section>
         </div>
 
         <!-- AI Templates Section -->
-        <section id="templates-section" class="templates-container">
-            <h2 class="section-title">Choose from <span class="gradient-text">Trending AI Styles</span></h2>
+        <section id="templates-section" class="templates-container no-print">
+            <h2 class="section-title">Explore <span class="gradient-text">62 Premium AI Themes</span></h2>
+            <p class="section-subtitle">Click any theme below to instantly re-theme your generated presentation.</p>
             <div class="templates-grid" id="templates-grid">
                 <!-- Templates injected by JS -->
             </div>
         </section>
     </main>
 
-    <script src="script.js"></script>
+    <!-- Full-Screen Presenter Mode Modal -->
+    <div class="presenter-overlay" id="presenter-overlay" style="display: none;">
+        <div class="presenter-container">
+            <div class="presenter-header">
+                <div class="presenter-title-area">
+                    <span class="live-dot"></span>
+                    <strong id="presenter-deck-title">Presentation Title</strong>
+                    <span class="presenter-slide-num" id="presenter-slide-num">Slide 1 of 5</span>
+                </div>
+                <div class="presenter-timer-area">
+                    <i class="fa-regular fa-clock"></i>
+                    <span id="presenter-timer-display">00:00</span>
+                    <button id="presenter-timer-toggle" class="btn-secondary small"><i class="fa-solid fa-pause"></i></button>
+                    <button id="presenter-timer-reset" class="btn-secondary small"><i class="fa-solid fa-rotate-left"></i></button>
+                </div>
+                <button class="btn-secondary small" id="exit-presenter-btn"><i class="fa-solid fa-xmark"></i> Exit Presenter Mode (Esc)</button>
+            </div>
+
+            <div class="presenter-body">
+                <!-- Current Active Slide View -->
+                <div class="presenter-main-slide" id="presenter-main-slide">
+                    <!-- Cloned active slide -->
+                </div>
+
+                <!-- Side Info: Next Slide & Speaker Notes -->
+                <div class="presenter-side-panel">
+                    <div class="next-slide-box">
+                        <h5><i class="fa-solid fa-forward"></i> Next Slide</h5>
+                        <div class="next-slide-viewport" id="next-slide-viewport">
+                            <!-- Next slide preview -->
+                        </div>
+                    </div>
+
+                    <div class="presenter-notes-box">
+                        <h5><i class="fa-solid fa-microphone-lines"></i> Speaker Notes</h5>
+                        <div class="presenter-notes-content" id="presenter-notes-text">
+                            <em>No notes for this slide.</em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="presenter-footer">
+                <button id="presenter-prev" class="btn-secondary"><i class="fa-solid fa-chevron-left"></i> Previous</button>
+                <button id="presenter-next" class="btn-primary">Next <i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Visual / Diagram Editor Modal -->
+    <div class="modal-overlay" id="visual-edit-modal" style="display: none;">
+        <div class="modal-card glass-panel visual-edit-card">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <div>
+                        <h3>Visual & Diagram Generator Studio</h3>
+                        <p>Customize the diagram code, switch concept art, or upload custom imagery</p>
+                    </div>
+                </div>
+                <button class="modal-close" id="close-visual-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Visual Type</label>
+                    <select id="modal-visual-type-select" class="styled-select">
+                        <option value="diagram">📊 Architecture & Flowchart Diagram (Mermaid)</option>
+                        <option value="procedural">🎨 AI Procedural Vector Artwork</option>
+                        <option value="custom-image">🖼️ Custom Image URL / Upload</option>
+                    </select>
+                </div>
+
+                <!-- Diagram Mermaid Editor Section -->
+                <div id="modal-diagram-section">
+                    <div class="form-group">
+                        <label for="modal-mermaid-code">Mermaid Diagram Code</label>
+                        <textarea id="modal-mermaid-code" class="main-content-textarea code-font" placeholder="graph TD
+A[Start] --> B(Process)
+B --> C{Decision}
+C -->|Yes| D[Result 1]
+C -->|No| E[Result 2]"></textarea>
+                    </div>
+                </div>
+
+                <!-- Custom Image Upload Section -->
+                <div id="modal-custom-image-section" style="display: none;">
+                    <div class="form-group">
+                        <label for="modal-image-url">Image URL</label>
+                        <input type="text" id="modal-image-url" placeholder="https://images.unsplash.com/...">
+                    </div>
+                    <div class="form-group">
+                        <label>Or Upload Image from Local Disk</label>
+                        <input type="file" id="modal-image-file" accept="image/*">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-primary" id="save-visual-btn">
+                    <i class="fa-solid fa-check"></i> Apply to Slide
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Icon Picker Modal -->
+    <div class="modal-overlay" id="icon-picker-modal" style="display: none;">
+        <div class="modal-card glass-panel icon-picker-card">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <i class="fa-solid fa-icons"></i>
+                    <div>
+                        <h3>Select an Icon</h3>
+                        <p>Choose an icon for this card component</p>
+                    </div>
+                </div>
+                <button class="modal-close" id="close-icon-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="icon-grid" id="icon-picker-grid">
+                    <!-- Injected by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Local AI Engine Settings Modal -->
+    <div class="modal-overlay" id="ai-settings-modal" style="display: none;">
+        <div class="modal-card glass-panel">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <div>
+                        <h3>Local AI Engine & Privacy Settings</h3>
+                        <p>Configure which on-device AI model processes your presentation</p>
+                    </div>
+                </div>
+                <button class="modal-close" id="close-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="privacy-guarantee-box">
+                    <i class="fa-solid fa-lock"></i>
+                    <div>
+                        <strong>100% Zero-Leakage Guarantee:</strong>
+                        <p>SlideGen.AI executes all AI algorithms locally on your machine. Your input text, company data, and notes are never sent to external servers.</p>
+                    </div>
+                </div>
+
+                <div class="engine-selection-list">
+                    <!-- Option 1: Ollama / Local Server -->
+                    <label class="engine-option-card">
+                        <input type="radio" name="local-ai-engine" value="ollama" checked>
+                        <div class="engine-details">
+                            <div class="engine-title-row">
+                                <span class="engine-name"><i class="fa-solid fa-server"></i> Local Desktop LLM (Ollama / LM Studio)</span>
+                                <span class="engine-tag recommended">Highest Quality</span>
+                            </div>
+                            <p class="engine-desc">Connects to your local Ollama (<code>localhost:11434</code>) or LM Studio (<code>localhost:1234</code>) instance on your GPU/CPU.</p>
+                            
+                            <div class="ollama-config-fields" id="ollama-config-fields">
+                                <div class="form-row">
+                                    <div class="form-group flex-2">
+                                        <label>Local Endpoint URL</label>
+                                        <input type="text" id="ollama-url" value="http://localhost:11434" placeholder="http://localhost:11434">
+                                    </div>
+                                    <div class="form-group flex-1 action-align">
+                                        <button type="button" id="test-ollama-btn" class="btn-secondary full-width">
+                                            <i class="fa-solid fa-plug"></i> Test / Fetch
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Select Local Model</label>
+                                    <select id="ollama-model-select" class="styled-select">
+                                        <option value="llama3.2">llama3.2 (Default)</option>
+                                        <option value="llama3.1">llama3.1</option>
+                                        <option value="mistral">mistral</option>
+                                        <option value="phi3.5">phi3.5 / phi4</option>
+                                        <option value="gemma2">gemma2</option>
+                                        <option value="qwen2.5">qwen2.5</option>
+                                        <option value="deepseek-r1">deepseek-r1</option>
+                                    </select>
+                                    <span class="helper-text" id="ollama-connection-status"><i class="fa-solid fa-info-circle"></i> Make sure Ollama or LM Studio is running on your machine.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </label>
+
+                    <!-- Option 2: WebGPU In-Browser LLM -->
+                    <label class="engine-option-card">
+                        <input type="radio" name="local-ai-engine" value="webgpu">
+                        <div class="engine-details">
+                            <div class="engine-title-row">
+                                <span class="engine-name"><i class="fa-solid fa-microchip"></i> In-Browser WebGPU LLM (Zero-Install)</span>
+                                <span class="engine-tag">100% In-Browser</span>
+                            </div>
+                            <p class="engine-desc">Runs open-source LLMs directly inside this browser tab using your GPU via WebGPU. Downloaded once and cached locally in browser storage.</p>
+                            
+                            <div class="webgpu-config-fields" id="webgpu-config-fields" style="display: none;">
+                                <div class="form-group">
+                                    <label>Select In-Browser Model</label>
+                                    <select id="webgpu-model-select" class="styled-select">
+                                        <option value="Qwen2.5-0.5B-Instruct-q4f16_1-MLC">Qwen2.5-0.5B (Ultra Fast, ~390 MB)</option>
+                                        <option value="SmolLM2-1.7B-Instruct-q4f16_1-MLC" selected>SmolLM2-1.7B (Recommended, ~1.0 GB)</option>
+                                        <option value="Llama-3.2-1B-Instruct-q4f16_1-MLC">Llama-3.2-1B (High Quality, ~880 MB)</option>
+                                        <option value="Phi-3.5-mini-instruct-q4f16_1-MLC">Phi-3.5-mini (Comprehensive, ~2.1 GB)</option>
+                                    </select>
+                                    <span class="helper-text"><i class="fa-solid fa-shield"></i> Requires WebGPU support (Chrome/Edge 113+, Safari 18+). Cached in IndexedDB.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </label>
+
+                    <!-- Option 3: Chrome Built-in AI -->
+                    <label class="engine-option-card">
+                        <input type="radio" name="local-ai-engine" value="chrome-ai">
+                        <div class="engine-details">
+                            <div class="engine-title-row">
+                                <span class="engine-name"><i class="fa-brands fa-chrome"></i> Chrome Built-in AI (Gemini Nano)</span>
+                                <span class="engine-tag" id="chrome-ai-tag">Checking...</span>
+                            </div>
+                            <p class="engine-desc">Uses Google Chrome's built-in on-device Prompt API (<code>window.ai.languageModel</code>) without any downloads.</p>
+                        </div>
+                    </label>
+
+                    <!-- Option 4: Fast Heuristic Rule Engine -->
+                    <label class="engine-option-card">
+                        <input type="radio" name="local-ai-engine" value="heuristic">
+                        <div class="engine-details">
+                            <div class="engine-title-row">
+                                <span class="engine-name"><i class="fa-solid fa-bolt-lightning"></i> High-Speed Local Heuristic Engine</span>
+                                <span class="engine-tag">Zero Resource</span>
+                            </div>
+                            <p class="engine-desc">Instant offline algorithmic parsing and section balancing. Works on any device with 0 memory overhead.</p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn-primary" id="save-engine-settings-btn">
+                    <i class="fa-solid fa-check"></i> Apply Engine Settings
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="script.js"></script>
 </body>
 </html>
