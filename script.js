@@ -1163,7 +1163,12 @@ function renderChartCanvas(canvasId, chartData, accentColor) {
     setTimeout(() => {
         const canvas = document.getElementById(canvasId);
         if (!canvas) return;
-        new Chart(canvas, {
+        if (typeof Chart === 'undefined' && typeof window.Chart === 'undefined') {
+            console.warn("Chart.js is not loaded");
+            return;
+        }
+        const ChartClass = typeof Chart !== 'undefined' ? Chart : window.Chart;
+        new ChartClass(canvas, {
             type: chartData.type || 'bar',
             data: {
                 labels: chartData.labels || ["Q1", "Q2", "Q3", "Q4"],
@@ -1607,7 +1612,12 @@ function exportToHTML() {
 
 // Native PptxGenJS Export Engine
 function downloadPPT() {
-    const pptx = new PptxGenJS();
+    if (typeof PptxGenJS === 'undefined' && typeof window.PptxGenJS === 'undefined') {
+        alert("PowerPoint export library is still loading or blocked. Please check your internet connection and try again.");
+        return;
+    }
+    const PptxClass = typeof PptxGenJS !== 'undefined' ? PptxGenJS : window.PptxGenJS;
+    const pptx = new PptxClass();
     const theme = state.currentTheme || themes[0];
 
     const cleanHex = (colorStr, defaultHex) => {
@@ -1875,8 +1885,14 @@ async function handleFileUpload(event) {
     const file = event.target.files[0];
     if (!file) return;
 
+    if (typeof JSZip === 'undefined' && typeof window.JSZip === 'undefined') {
+        alert("PPTX file decompiler library is still loading or blocked. Please check your connection and try again.");
+        return;
+    }
+    const JSZipClass = typeof JSZip !== 'undefined' ? JSZip : window.JSZip;
+
     try {
-        const zip = await JSZip.loadAsync(file);
+        const zip = await JSZipClass.loadAsync(file);
         const slideFiles = Object.keys(zip.files).filter(name => name.startsWith('ppt/slides/slide') && name.endsWith('.xml'));
         
         slideFiles.sort((a, b) => {

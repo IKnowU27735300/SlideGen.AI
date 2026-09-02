@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="50%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#0a0e1a"/>
+    </linearGradient>
+    <linearGradient id="primary-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#ec4899"/>
+    </linearGradient>
+    <linearGradient id="accent-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Rounded Base -->
+  <rect width="64" height="64" rx="16" fill="url(#bg)"/>
+  <rect x="1" y="1" width="62" height="62" rx="15" fill="none" stroke="url(#primary-grad)" stroke-width="2" stroke-opacity="0.6"/>
+  
+  <!-- Presentation Screen Shape -->
+  <rect x="12" y="14" width="40" height="26" rx="4" fill="#1e293b" stroke="url(#accent-grad)" stroke-width="1.5"/>
+  <rect x="16" y="18" width="14" height="6" rx="2" fill="url(#primary-grad)"/>
+  <circle cx="44" cy="21" r="2" fill="#38bdf8"/>
+  <circle cx="40" cy="21" r="2" fill="#a855f7"/>
+  <line x1="16" y1="28" x2="34" y2="28" stroke="#64748b" stroke-width="2" stroke-linecap="round"/>
+  <line x1="16" y1="33" x2="46" y2="33" stroke="#475569" stroke-width="1.5" stroke-linecap="round"/>
+  
+  <!-- Screen Stand -->
+  <path d="M 32 40 L 32 46 M 24 46 L 40 46" stroke="url(#accent-grad)" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Magic Sparkle -->
+  <path d="M 46 8 Q 46 14 40 14 Q 46 14 46 20 Q 46 14 52 14 Q 46 14 46 8 Z" fill="url(#primary-grad)"/>
+  <circle cx="53" cy="22" r="1.5" fill="#facc15"/>
+</svg>

@@ -1,0 +1,24 @@
+{
+  "name": "slidegen-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "100% On-Device AI Presentation Studio Pro",
+  "type": "module",
+  "scripts": {
+    "dev": "npx -y serve . -l 3000",
+    "start": "npx -y serve .",
+    "build": "echo '✓ Static assets ready for deployment'",
+    "preview": "npx -y serve ."
+  },
+  "keywords": [
+    "presentation",
+    "ai",
+    "on-device",
+    "pptx",
+    "slides",
+    "webgpu",
+    "ollama"
+  ],
+  "author": "SlideGen.AI Team",
+  "license": "AGPL-3.0"
+}
