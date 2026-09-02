@@ -10,30 +10,33 @@
 ```
 
 <h3>⚡ NEXT-GEN ON-DEVICE PRESENTATION INTELLIGENCE ⚡</h3>
-<p><strong>Autonomous Neural Synthesis • 100% Local Hardware Execution • Zero Cloud Data Leakage</strong></p>
+<p><strong>Autonomous Neural Synthesis • 100% Local Hardware Execution • Zero Cloud Data Leakage • 130 Dynamic Themes</strong></p>
 
 <p>
   <img src="https://img.shields.io/badge/SECURITY-ZERO--LEAKAGE_AIRGAP-00ffcc?style=for-the-badge&logo=shield&logoColor=black" alt="Airgap Security" />
   <img src="https://img.shields.io/badge/CORE-LOCAL_NEURAL_SYNTHESIS-7928CA?style=for-the-badge&logo=cpu" alt="Neural Core" />
-  <img src="https://img.shields.io/badge/LAYOUTS-BENTO_|_KPI_|_DIAGRAMS-ff0080?style=for-the-badge" alt="Visual Layouts" />
-  <img src="https://img.shields.io/badge/THEMES-62_FUTURISTIC_STYLES-0070F3?style=for-the-badge" alt="62 Themes" />
+  <img src="https://img.shields.io/badge/THEMES-130_DYNAMIC_STYLES-ff0080?style=for-the-badge" alt="130 Themes" />
+  <img src="https://img.shields.io/badge/UI-STUDIO_PRO_OBSIDIAN-0070F3?style=for-the-badge" alt="Studio Pro UI" />
+  <img src="https://img.shields.io/badge/DEPLOY-VERCEL_READY-000000?style=for-the-badge&logo=vercel" alt="Vercel Ready" />
 </p>
 
 <p>
   <a href="#-overview">Overview</a> •
-  <a href="#-architectural-pipeline">Architecture</a> •
+  <a href="#-system-architecture-pipeline">Architecture</a> •
   <a href="#-core-capabilities">Capabilities</a> •
-  <a href="#-visual-intelligence--layout-engine">Visual Engine</a> •
-  <a href="#-privacy-fortress">Zero-Leakage Fortress</a> •
-  <a href="#-holographic-presenter-console">Presenter Console</a>
+  <a href="#-130-dynamic--futuristic-themes">130 Themes</a> •
+  <a href="#-designer-typography--procedural-decorators">Typography & Decorators</a> •
+  <a href="#-zero-leakage-privacy-fortress">Privacy Fortress</a> •
+  <a href="#-holographic-presenter-console">Presenter Console</a> •
+  <a href="#-deployment--quick-start">Deployment</a>
 </p>
 
 <br />
 
 <p>
-  <strong>SlideGen.AI Studio</strong> is an autonomous on-device presentation designer. 
+  <strong>SlideGen.AI Studio Pro</strong> is a local-first, on-device presentation designer. 
   <br />
-  Transform brief conceptual prompts, unstructured intelligence documents, or legacy slide files into structured, visually engaging presentations directly on your local hardware.
+  Transform brief concepts, raw notes, or uploaded PPTX files into executive slide decks with automatic visual layouts, Mermaid flowcharts, Bento grids, and native PowerPoint exports directly on your hardware.
 </p>
 
 </div>
@@ -46,34 +49,39 @@
 flowchart TD
     subgraph INGESTION["📥 MULTI-PATHWAY INGESTION MATRIX"]
         T["🏷️ Topic & Concept Seed"]
-        N["📄 Unstructured Intelligence Notes"]
-        P["📁 Legacy PPTX Decompiler"]
+        N["📄 Unstructured Notes & Outlines"]
+        P["📁 Legacy PPTX File Decompiler"]
     end
 
     subgraph NEURAL_CORE["🧠 ON-DEVICE NEURAL SYNTHESIS"]
-        A["⚡ Local Hardware Sandbox Engine"]
+        A["⚡ Local Hardware Inference Engine"]
         S["📐 Adaptive Storyboard & Narrative Arc"]
-        V["🎨 Visual Component & Diagram Mapper"]
+        V["🎨 Visual Component & Layout Mapper"]
+        O["🦙 Ollama Desktop Bridge (localhost:11434)"]
     end
 
     subgraph VISUAL_STUDIO["🍱 NEXT-GEN LAYOUT & STUDIO MATRIX"]
         B["🍱 Asymmetric Bento Grids"]
-        D["📊 Live Architecture Flowcharts"]
-        K["📈 KPI & Trend Analytics"]
-        I["🖼️ Procedural Concept Art"]
+        D["📊 Live Architecture Flowcharts (Mermaid)"]
+        K["📈 KPI & Quantitative Analytics"]
+        C["📉 Native Charts (Bar / Line / Donut)"]
+        I["🖼️ Visual Feature Splits & Concept Art"]
+        L["⏳ Strategic Timelines & Roadmaps"]
+        M["⚖️ Comparison Matrices & Teams"]
         W["✏️ WYSIWYG Inline Live Sync"]
     end
 
-    subgraph EXPORT["🚀 DEPLOYMENT & DELIVERY"]
-        PPT["💾 Native PowerPoint Presentation"]
+    subgraph EXPORT["🚀 MULTI-FORMAT DELIVERY"]
+        PPT["💾 Native PowerPoint Presentation (.pptx)"]
         PDF["🖨️ Vector Print Matrix (PDF)"]
-        HTML["🌐 Self-Contained Web Deck"]
-        PRES["🎤 Full-Screen Presenter Console"]
+        HTML["🌐 Self-Contained Web Deck (.html)"]
+        PRES["🎤 Mission-Control Presenter Console"]
     end
 
     T --> A
     N --> A
     P --> A
+    O -.-> A
 
     A --> S
     S --> V
@@ -81,9 +89,12 @@ flowchart TD
     V --> B
     V --> D
     V --> K
+    V --> C
     V --> I
+    V --> L
+    V --> M
 
-    B & D & K & I <--> W
+    B & D & K & C & I & L & M <--> W
 
     W --> PPT
     W --> PDF
@@ -101,49 +112,65 @@ flowchart TD
 ## ⚡ Core Capabilities
 
 ### 1. 📥 Multi-Pathway Ingestion Matrix
-- **Conceptual Seed Synthesis**: Enter a single topic title (e.g., *Quantum Encryption Matrix*, *Autonomous Transport*) and the neural engine autonomously structures a multi-chapter executive narrative.
-- **Unstructured Intelligence Parser**: Paste raw documentation, research notes, or unstructured bullet points $\rightarrow$ the system analyzes key takeaways, structures chapters, and generates presenter notes.
-- **Legacy Deck Decompiler**: Drag and drop existing presentation files to decompile hierarchies, text blocks, and presenter notes for instant modern layout restyling.
+- **Conceptual Seed Synthesis**: Enter a single topic title (e.g., *Quantum Computing Breakthroughs*, *Autonomous Vehicles*) and the neural engine synthesizes a multi-chapter executive deck.
+- **Unstructured Notes & Outlines**: Paste raw research documents, lecture notes, or markdown outlines $\rightarrow$ the system analyzes key takeaways, structures slides, and crafts speaker notes.
+- **Legacy PPTX Decompiler**: Drag and drop existing `.pptx` files to extract hierarchy, bullet points, and speaker notes for instant modern layout restyling.
 
-### 2. 🍱 Visual Intelligence & Diagram Engine
-- **📊 Interactive Architecture Flowcharts**: Generates live vector diagrams, system topologies, and process flowcharts directly on slides.
-- **🍱 Asymmetric Bento Grids**: Modern multi-card information matrices with accent indicators and takeaway badges.
-- **📈 KPI & Metric Showcase**: High-impact quantitative statistics (`+140%`, `$4.5M`, `99.9%`) paired with context indicators.
-- **🖼️ Procedural Vector Concept Art**: Generates dynamic abstract and geometric concept visuals on-the-fly.
-- **⏳ Strategic Timelines & Roadmaps**: Horizontal milestone sequences connected with step badges.
-- **👥 Contributor & Team Matrices**: Team showcase cards featuring avatar badges, leadership roles, and bios.
+### 2. 🍱 Visual Intelligence & Layout Engine
+- **🍱 Asymmetric Bento Grids**: Multi-card information matrices with accent indicators and takeaway badges.
+- **📊 Interactive Architecture Flowcharts**: Generates live vector diagrams, system topologies, and process flowcharts using Mermaid.js.
+- **📈 KPI & Metric Showcases**: High-impact quantitative statistics (`+140%`, `$4.5M`, `99.9%`) paired with trend labels.
+- **📈 Native Interactive Charts**: Live Chart.js bar, line, and donut data visualizations rendered on the canvas.
+- **⏳ Strategic Timelines & Roadmaps**: Horizontal milestone sequences connected with numbered step badges.
+- **⚖️ Comparison Matrices & Team Grids**: Side-by-side comparative breakdowns and team contributor showcases.
 
-### 3. ✏️ Interactive Slide Studio (WYSIWYG Inline Engine)
-- **Direct Live Editing**: Click any title, bullet point, metric number, or flowchart node directly on the slide viewport with real-time two-way synchronization.
-- **Visual Thumbnail Strip**: Horizontal navigation carousel with numbered slide markers and layout badges.
-- **Per-Slide Layout Swapper**: Transform any individual slide between Bento, Flowchart, Metric, or Split layout in 1 click without losing text.
-- **Curated Vector Icon Picker**: Click any icon across cards and timelines to swap it from an onboard vector library.
+### 3. ✏️ Interactive Slide Studio (WYSIWYG Workbench)
+- **Direct Live Editing**: Click any title, subtitle, bullet point, metric number, or flowchart node directly on the slide viewport with real-time two-way synchronization.
+- **Floating Studio Toolbar**: Instant layout switcher, custom accent color picker with color-wheel ring, slide reordering, duplication, and deletion.
+- **Filmstrip Thumbnail Strip**: Horizontal navigation carousel with numbered slide markers and active glow rings.
+- **Vector Icon Picker**: Click any icon across cards and timelines to swap it from an onboard curated icon library.
 
-```mermaid
-classDiagram
-    class SlideEngine {
-        +String title
-        +String subtitle
-        +String layoutType
-        +Array bullets
-        +Array bentoCards
-        +Array kpis
-        +Object diagramCode
-        +String speakerNotes
-        +renderPreview()
-        +exportNativePPTX()
-    }
-    class LayoutMatrix {
-        <<Interface>>
-        +BentoGrid()
-        +ArchitectureDiagram()
-        +KPIStatShowcase()
-        +ProceduralConceptArt()
-        +TimelineMilestones()
-        +ComparisonMatrix()
-    }
-    SlideEngine ..> LayoutMatrix : Dynamically Dispatches
-```
+---
+
+## 🎨 130 Dynamic & Futuristic Themes
+
+Explore **130 human-crafted themes** across curated design aesthetics:
+
+| Category Filter | Atmospheric Signature | Signature Typography | Key Themes |
+| :--- | :--- | :--- | :--- |
+| **Futuristic & Deep Tech** | Neural quantum grids, hyperlime accents, cyber telemetry | `Space Grotesk`, `Orbitron`, `Plus Jakarta Sans` | *Quantum Superposition*, *Neural Mesh*, *Zero-Point Energy*, *Bio-Synthetic DNA* |
+| **Cyberpunk & HUD** | Deep carbon obsidian, glowing neon cyan, radar scanlines | `Orbitron`, `JetBrains Mono`, `Righteous` | *Cyberpunk Neon*, *Neon Tokyo 2077*, *Sub-Atomic Pulse*, *Glitch Protocol* |
+| **Spatial & VisionOS** | Frosted glassmorphism, iridescent auroras, specular bevels | `Outfit`, `Unbounded`, `Sora` | *VisionOS Spatial Glass*, *Holographic Dream*, *Prismatic Refraction* |
+| **Aerospace & Sci-Fi** | Deep space starlight, cockpit telemetry, orbital rings | `JetBrains Mono`, `Orbitron`, `Space Grotesk` | *Deep Space Cosmos*, *Orbital Trajectory*, *Titan Cryo-Ice*, *Hyperspace Warp* |
+| **Luxury Noir & Gold** | Obsidian black, brushed Champagne gold, royal emerald | `Cinzel`, `Playfair Display`, `Syne` | *Executive Dark*, *Midnight Gold Sovereign*, *Velvet Noir*, *Haute Horlogerie* |
+| **Swiss & Editorial** | High-contrast brutalism, architectural typography, pure grids | `Space Grotesk`, `Syne`, `Playfair Display` | *Swiss International*, *Neo-Brutalism Bold*, *Monochrome Chic*, *Bauhaus Matrix* |
+| **Minimal & Clean** | Crisp porcelain white, calm earthy pastels, modern SaaS | `Plus Jakarta Sans`, `Inter`, `Lora`, `Sora` | *Tech Minimal*, *Arctic Frost Blue*, *Nature Calm*, *Matcha Cream Zen* |
+
+---
+
+## 🖋️ Designer Typography & Procedural Decorators
+
+### Bespoke Font Pairings
+Every theme is paired with curated Google Fonts optimized for legibility and aesthetic balance:
+- **Display & Headlines**: `Space Grotesk`, `Cinzel`, `Syne`, `Orbitron`, `Unbounded`, `Righteous`, `Playfair Display`
+- **Body & Product Interfaces**: `Plus Jakarta Sans`, `Inter`, `Sora`, `Manrope`, `Lora`
+- **Code & Telemetry**: `JetBrains Mono`
+
+### 14 Procedural Dynamic Vector Decorators
+1. **Quantum Orbital Rings** (Counter-rotating orbital rings with subatomic particle nodes)
+2. **Particle Field Constellation** (Interactive twinkling starlight grid)
+3. **Radar Telemetry Scan** (360° sweeping target beam with pulse blips)
+4. **Cyber Glitch Offset** (Horizontal glitch lines with memory address tag)
+5. **Synthetic DNA Double Helix** (Glowing biological curve matrix)
+6. **Waveform Equalizer Spectrum** (7-band acoustic equalizer analyzer)
+7. **Isometric Wireframe Hypercube** (3D geometric matrix hypercube)
+8. **Precision Laser Crosshair** (Aerospace target reticle with lock telemetry)
+9. **HUD Matrix Grid** (Background coordinate grid pattern)
+10. **Cyber Corner Brackets** (Tactical UI framing corners)
+11. **Hologram Scanline** (Animated CRT telemetry beam)
+12. **Hexagon Mesh** (Geometric honeycomb grid)
+13. **Orbital Rings** (Dashed planetary trajectories)
+14. **Bauhaus Geometric Pillars** (Modernist abstract color blocks)
 
 ---
 
@@ -164,48 +191,62 @@ SlideGen.AI operates under a strict **Zero-Cloud-Leakage Guarantee**:
 |                               ▼                             |
 |             [ Generated High-Impact Presentation ]           |
 |                                                             |
-|   ❌ ZERO External API Calls    ❌ ZERO Telemetry Logging    |
+|   ❌ ZERO External API Calls    ❌ ZERO Telemetry Tracking   |
 |   ❌ ZERO Cloud Transmissions   ✅ 100% Offline Capable     |
 +-------------------------------------------------------------+
 ```
 
+### Local Multi-Engine AI Support:
+- **Instant Browser Engine**: Zero-setup, instant on-device neural heuristic generator.
+- **Ollama Desktop Bridge**: Direct integration with local Ollama models (`llama3.2`, `mistral`, `qwen2.5`, `phi3`) over `http://localhost:11434`.
+- **WebLLM WebGPU**: Run open-weights LLMs entirely in the browser using WebGPU.
+
 ---
 
-## 🎤 Holographic Presenter Console
+## 🎤 Mission-Control Presenter Console
 
-Launch a full-screen presenter control environment designed for live delivery:
+Launch a full-screen presenter control environment designed for live stage delivery:
 
-- **Audience Display Viewport**: Crystal clear 16:9 presentation projection.
+- **Audience Display Viewport**: 16:9 projection viewport with slide animations.
 - **Next-Slide Radar**: Real-time thumbnail preview of the upcoming slide to maintain pacing.
-- **Mission Clock Timer**: Integrated execution timer with start, pause, and reset controls.
-- **Embedded Teleprompter Notes**: Real-time presenter notes synchronized per slide.
-- **Keyboard Command Navigation**: Seamless transition control via arrow keys, spacebar, and escape shortcuts.
+- **Digital Mission Clock**: Precision elapsed timer with start, pause, and reset controls.
+- **Presenter Notes Drawer**: Synchronized presenter notes with live on-screen editing.
+- **Keyboard Shortcuts**: Arrow keys, Spacebar, and Escape shortcuts for frictionless control.
 
 ---
 
-## 🎨 62 Futuristic Theme Matrices
+## 🚀 Multi-Format Export Matrix
 
-Switch visual atmospheres instantly across 62 built-in curated palettes:
-
-| Atmospheric Class | Visual Characteristic | Accent Aura |
-| :--- | :--- | :--- |
-| **Cyberpunk** | High-contrast deep carbon with neon cyan & hot magenta | `#22d3ee` / `#f472b6` |
-| **Midnight Aurora** | Deep oceanic gradient with crystalline teal glowing highlights | `#00e5ff` |
-| **Holographic Dream** | Iridescent multi-stop vibrant gradient spectrum | `#ffeb3b` |
-| **Slate Modern** | Matte architectural slate with sharp cyan indicators | `#06b6d4` |
-| **Executive Dark** | Obsidian background paired with brushed gold typography | `#d4af37` |
-| **Emerald Elegance** | Rich forest green with warm amber accents | `#ffd700` |
+- **💾 Native PowerPoint (`.pptx`)**: Generates true native vector shapes, bento boxes, stat callouts, charts, and embedded speaker notes powered by PptxGenJS.
+- **🖨️ Vector Print / PDF**: Formats all slides into vector pages for high-res PDF generation.
+- **🌐 Standalone Web Deck (`.html`)**: Downloads a self-contained, single-file presentation deck for offline viewing in any browser.
 
 ---
 
-## 🚀 Deployment & Multi-Format Delivery
+## 📦 Deployment & Quick Start
 
-- **💾 Native PowerPoint (`.pptx`)**: Generates true native vector shapes, bento boxes, large numeric stat callouts, editable charts, and embedded speaker notes.
-- **🖨️ Vector Print Matrix (PDF)**: Clean print stylesheet formatting all slides into full-page vector documents.
-- **🌐 Standalone Web Deck (`.html`)**: Downloads a self-contained single-file offline presentation.
+### Local Development
+```bash
+# Clone repository
+git clone https://github.com/IKnowU27735300/SlideGen.AI.git
+cd SlideGen.AI
+
+# Install dependencies (optional for local dev server)
+npm install
+
+# Test build
+npm run build
+```
+
+### Vercel Deployment
+SlideGen.AI includes pre-configured [`vercel.json`](vercel.json) with root directory output:
+1. Import the repository into your [Vercel Dashboard](https://vercel.com).
+2. Framework Preset: **Other** / **Static Site**.
+3. Output Directory: **`.`** (Root).
+4. Click **Deploy**.
 
 ---
 
 <div align="center">
-  <p><strong>SlideGen.AI Studio • The Future of Autonomous On-Device Presentation Design</strong></p>
+  <p><strong>SlideGen.AI Studio Pro • Autonomous On-Device Presentation Design</strong></p>
 </div>
