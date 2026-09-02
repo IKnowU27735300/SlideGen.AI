@@ -27,29 +27,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="background-blobs">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
+    <div class="studio-ambient-grid">
+        <div class="grid-spotlight"></div>
+        <div class="grid-pattern"></div>
     </div>
 
     <!-- Header Navigation -->
     <header class="no-print">
         <nav class="glass-nav">
             <div class="logo">
-                <i class="fa-solid fa-wand-magic-sparkles"></i>
-                <span>SlideGen.AI</span>
-                <span class="logo-sub">STUDIO PRO</span>
+                <div class="logo-icon-badge">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+                <div class="logo-text-group">
+                    <span class="logo-title">SlideGen<span class="logo-ai">.AI</span></span>
+                    <span class="logo-sub">STUDIO PRO</span>
+                </div>
             </div>
             <div class="nav-links">
-                <a href="#" class="active"><i class="fa-solid fa-layer-group"></i> Studio</a>
-                <a href="#templates-section"><i class="fa-solid fa-palette"></i> 130 Dynamic Themes</a>
+                <a href="#" class="active"><i class="fa-solid fa-sliders"></i> Studio Workbench</a>
+                <a href="#templates-section"><i class="fa-solid fa-swatchbook"></i> 130 Themes Catalog</a>
             </div>
             <div class="nav-actions">
                 <div class="privacy-badge" id="privacy-badge" title="All AI generation runs 100% locally on your machine. Zero cloud data transmission.">
-                    <i class="fa-solid fa-shield-halved"></i>
-                    <span id="privacy-status-text">100% Local AI</span>
                     <span class="status-dot"></span>
+                    <span id="privacy-status-text">100% Local AI</span>
                 </div>
                 <button id="ai-settings-btn" class="btn-secondary small engine-btn" title="Configure Local AI Engine">
                     <i class="fa-solid fa-microchip"></i>
@@ -62,11 +64,20 @@
     <main>
         <!-- Hero Banner -->
         <section class="hero no-print">
-            <div class="privacy-pill">
-                <i class="fa-solid fa-lock"></i> 100% On-Device AI • Zero Cloud Leakage • Visuals, Diagrams, Bento & KPIs
+            <div class="hero-badge-pill">
+                <span class="pill-dot"></span>
+                <span>AIR-GAPPED ON-DEVICE SYNTHESIS • ZERO CLOUD TELEMETRY</span>
             </div>
-            <h1>Design Stunning Presentations <br><span class="gradient-text">In Seconds with Local AI</span></h1>
-            <p class="subtitle">Turn topics, notes, or uploaded PPTX decks into presentation masterpieces on your own hardware.</p>
+            <h1>Architect Presentation Decks <br><span class="hero-gradient-text">With Local Neural Precision</span></h1>
+            <p class="subtitle">Transform concepts, documents, and PPTX files into executive slide decks with automatic visual layouts, Mermaid flowcharts, Bento grids, and native PowerPoint exports.</p>
+            
+            <div class="hero-features-bar">
+                <span class="feature-tag"><i class="fa-solid fa-shield-halved"></i> 100% Private</span>
+                <span class="feature-tag"><i class="fa-solid fa-table-cells-large"></i> Bento & KPIs</span>
+                <span class="feature-tag"><i class="fa-solid fa-diagram-project"></i> Auto Diagrams</span>
+                <span class="feature-tag"><i class="fa-solid fa-tv"></i> Presenter HUD</span>
+                <span class="feature-tag"><i class="fa-solid fa-file-powerpoint"></i> Native PPTX</span>
+            </div>
         </section>
 
         <!-- Main Studio App Container -->
