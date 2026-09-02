@@ -14,7 +14,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Raleway:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Raleway:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
     <!-- PptxGenJS -->
     <script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
     <!-- JSZip -->
@@ -43,7 +43,7 @@
             </div>
             <div class="nav-links">
                 <a href="#" class="active"><i class="fa-solid fa-layer-group"></i> Studio</a>
-                <a href="#templates-section"><i class="fa-solid fa-palette"></i> 62 AI Themes</a>
+                <a href="#templates-section"><i class="fa-solid fa-palette"></i> 88 Dynamic Themes</a>
             </div>
             <div class="nav-actions">
                 <div class="privacy-badge" id="privacy-badge" title="All AI generation runs 100% locally on your machine. Zero cloud data transmission.">
@@ -342,8 +342,19 @@ The Local AI will analyze the content on your device and synthesize high-impact 
 
         <!-- AI Templates Section -->
         <section id="templates-section" class="templates-container no-print">
-            <h2 class="section-title">Explore <span class="gradient-text">62 Premium AI Themes</span></h2>
-            <p class="section-subtitle">Click any theme below to instantly re-theme your generated presentation.</p>
+            <h2 class="section-title">Explore <span class="gradient-text">88 Dynamic & Futuristic Themes</span></h2>
+            <p class="section-subtitle">Bespoke, human-crafted visual atmospheres designed for high-impact presentations.</p>
+            
+            <div class="theme-filter-bar" id="theme-filter-bar">
+                <button class="theme-filter-btn active" data-filter="all"><i class="fa-solid fa-shapes"></i> All (88)</button>
+                <button class="theme-filter-btn" data-filter="Futuristic"><i class="fa-solid fa-bolt"></i> Futuristic & Deep Tech</button>
+                <button class="theme-filter-btn" data-filter="Cyberpunk"><i class="fa-solid fa-terminal"></i> Cyberpunk & HUD</button>
+                <button class="theme-filter-btn" data-filter="VisionOS"><i class="fa-solid fa-cubes"></i> Spatial & Glass</button>
+                <button class="theme-filter-btn" data-filter="Luxury"><i class="fa-solid fa-crown"></i> Luxury Dark</button>
+                <button class="theme-filter-btn" data-filter="Editorial"><i class="fa-solid fa-newspaper"></i> Swiss & Editorial</button>
+                <button class="theme-filter-btn" data-filter="Clean"><i class="fa-solid fa-feather"></i> Minimal & Clean</button>
+            </div>
+
             <div class="templates-grid" id="templates-grid">
                 <!-- Templates injected by JS -->
             </div>

@@ -43,70 +43,99 @@ const state = {
     activeEditingVisualSlideIdx: null
 };
 
-// 62 Premium Themes
+// 88 Premium & Futuristic Themes
 const themes = [
-    { id: "swiss-international", name: "Swiss International", tags: ["Professional", "Grid", "Clean"], background: "#ffffff", color: "#000000", accent: "#ff0000", font: "Arial", titleAlign: "left", shapes: "rect", animation: "fadeIn", layout: "split" },
-    { id: "executive-dark", name: "Executive Dark", tags: ["Premium", "Business"], background: "#121212", color: "#e0e0e0", accent: "#d4af37", font: "Playfair Display", titleAlign: "center", shapes: "line", animation: "zoomIn", layout: "centered" },
-    { id: "tech-minimal", name: "Tech Minimal", tags: ["Modern", "Startup"], background: "#f3f4f6", color: "#111827", accent: "#2563eb", font: "Inter", titleAlign: "left", shapes: "none", animation: "flyIn", layout: "sidebar" },
-    { id: "modern-dark", name: "Modern Dark", tags: ["Tech", "Sleek"], background: "#1e1e2e", color: "#ffffff", accent: "#89b4fa", font: "Montserrat", titleAlign: "left", shapes: "circle", animation: "fadeIn", layout: "standard" },
-    { id: "corporate-blue", name: "Corporate Blue", tags: ["Business", "Professional"], background: "#ffffff", color: "#1e3a8a", accent: "#3b82f6", font: "Arial", titleAlign: "center", shapes: "rect", animation: "zoomIn", layout: "standard" },
-    { id: "glassmorphism", name: "Glassmorphism", tags: ["Trendy", "Modern"], background: "linear-gradient(135deg, #2dd4bf 0%, #3b82f6 100%)", color: "#ffffff", accent: "#ffffff", font: "Outfit", titleAlign: "center", shapes: "circle", animation: "zoomIn", layout: "centered" },
-    { id: "neo-brutalism", name: "Neo-Brutalism", tags: ["Bold", "Edgy"], background: "#f0f0f0", color: "#000000", accent: "#ff0055", font: "Poppins", titleAlign: "left", shapes: "rect", animation: "flyIn", layout: "split" },
-    { id: "nature-calm", name: "Nature Calm", tags: ["Organic", "Peaceful"], background: "#ecfccb", color: "#14532d", accent: "#65a30d", font: "Playfair Display", titleAlign: "center", shapes: "blob", animation: "fadeIn", layout: "centered" },
-    { id: "cyberpunk", name: "Cyberpunk", tags: ["Futuristic", "Neon"], background: "#09090b", color: "#22d3ee", accent: "#f472b6", font: "Outfit", titleAlign: "right", shapes: "line", animation: "zoomIn", layout: "standard" },
-    { id: "gradient-mesh", name: "Gradient Mesh", tags: ["Vibrant", "Modern"], background: "linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)", color: "#ffffff", accent: "#ffd700", font: "Raleway", titleAlign: "center", shapes: "circle", animation: "fadeIn", layout: "centered" },
-    { id: "midnight-aurora", name: "Midnight Aurora", tags: ["Elegant", "Dark"], background: "linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%)", color: "#e0f2f1", accent: "#00e5ff", font: "Playfair Display", titleAlign: "left", shapes: "line", animation: "zoomIn", layout: "split" },
-    { id: "sunset-vibes", name: "Sunset Vibes", tags: ["Warm", "Creative"], background: "linear-gradient(135deg, #ff6b6b 0%, #feca57 50%, #ee5a6f 100%)", color: "#ffffff", accent: "#2d3436", font: "Lora", titleAlign: "center", shapes: "blob", animation: "fadeIn", layout: "centered" },
-    { id: "ocean-breeze", name: "Ocean Breeze", tags: ["Calm", "Professional"], background: "linear-gradient(135deg, #667db6 0%, #0082c8 50%, #667db6 100%)", color: "#ffffff", accent: "#ffd89b", font: "Montserrat", titleAlign: "left", shapes: "rect", animation: "flyIn", layout: "sidebar" },
-    { id: "neon-dreams", name: "Neon Dreams", tags: ["Bold", "Electric"], background: "#0a0e27", color: "#ffffff", accent: "#00ff88", font: "Raleway", titleAlign: "left", shapes: "line", animation: "zoomIn", layout: "split" },
-    { id: "minimalist-pro", name: "Minimalist Pro", tags: ["Clean", "Simple"], background: "#fafafa", color: "#2c3e50", accent: "#e74c3c", font: "Arial", titleAlign: "left", shapes: "none", animation: "fadeIn", layout: "standard" },
-    { id: "retro-wave", name: "Retro Wave", tags: ["80s", "Vibrant"], background: "linear-gradient(135deg, #2b5876 0%, #4e4376 100%)", color: "#ff6ec7", accent: "#00d4ff", font: "Poppins", titleAlign: "center", shapes: "circle", animation: "zoomIn", layout: "centered" },
-    { id: "forest-green", name: "Forest Green", tags: ["Natural", "Earthy"], background: "#1b4332", color: "#d8f3dc", accent: "#95d5b2", font: "Playfair Display", titleAlign: "center", shapes: "blob", animation: "fadeIn", layout: "centered" },
-    { id: "rose-gold-luxury", name: "Rose Gold Luxury", tags: ["Premium", "Elegant"], background: "#2d2d2d", color: "#f5f5f5", accent: "#e8b4b8", font: "Playfair Display", titleAlign: "center", shapes: "line", animation: "zoomIn", layout: "centered" },
-    { id: "arctic-frost", name: "Arctic Frost", tags: ["Cool", "Modern"], background: "linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%)", color: "#2c3e50", accent: "#3498db", font: "Inter", titleAlign: "left", shapes: "rect", animation: "flyIn", layout: "sidebar" },
-    { id: "warm-autumn", name: "Warm Autumn", tags: ["Cozy", "Seasonal"], background: "linear-gradient(135deg, #f77062 0%, #fe5196 100%)", color: "#ffffff", accent: "#ffd89b", font: "Montserrat", titleAlign: "center", shapes: "circle", animation: "fadeIn", layout: "centered" },
-    { id: "holographic-dream", name: "Holographic Dream", tags: ["Futuristic", "Iridescent"], background: "linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%)", color: "#ffffff", accent: "#ffeb3b", font: "Lora", titleAlign: "center", shapes: "circle", animation: "zoomIn", layout: "centered" },
-    { id: "midnight-gold", name: "Midnight Gold", tags: ["Luxury", "Premium"], background: "#1a1a2e", color: "#eee", accent: "#ffd700", font: "Playfair Display", titleAlign: "center", shapes: "line", animation: "fadeIn", layout: "centered" },
-    { id: "electric-purple", name: "Electric Purple", tags: ["Bold", "Modern"], background: "linear-gradient(135deg, #6a11cb 0%, #2575fc 100%)", color: "#ffffff", accent: "#00ffff", font: "Raleway", titleAlign: "left", shapes: "rect", animation: "flyIn", layout: "split" },
-    { id: "cherry-blossom", name: "Cherry Blossom", tags: ["Delicate", "Spring"], background: "linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)", color: "#5d4037", accent: "#d81b60", font: "Playfair Display", titleAlign: "center", shapes: "blob", animation: "fadeIn", layout: "centered" },
-    { id: "deep-space", name: "Deep Space", tags: ["Cosmic", "Dark"], background: "linear-gradient(135deg, #000000 0%, #0f2027 50%, #203a43 100%)", color: "#ffffff", accent: "#9c27b0", font: "Montserrat", titleAlign: "left", shapes: "circle", animation: "zoomIn", layout: "sidebar" },
-    { id: "emerald-elegance", name: "Emerald Elegance", tags: ["Sophisticated", "Green"], background: "linear-gradient(135deg, #134e5e 0%, #71b280 100%)", color: "#ffffff", accent: "#ffd700", font: "Playfair Display", titleAlign: "center", shapes: "line", animation: "fadeIn", layout: "centered" },
-    { id: "coral-reef", name: "Coral Reef", tags: ["Vibrant", "Tropical"], background: "linear-gradient(135deg, #ff9a56 0%, #ff6a88 50%, #ff99ac 100%)", color: "#ffffff", accent: "#2d3436", font: "Poppins", titleAlign: "left", shapes: "blob", animation: "flyIn", layout: "split" },
-    { id: "monochrome-chic", name: "Monochrome Chic", tags: ["Minimal", "B&W"], background: "#ffffff", color: "#000000", accent: "#333333", font: "Arial", titleAlign: "left", shapes: "rect", animation: "fadeIn", layout: "sidebar" },
-    { id: "lavender-mist", name: "Lavender Mist", tags: ["Soft", "Pastel"], background: "linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)", color: "#4a4a4a", accent: "#7b2cbf", font: "Lora", titleAlign: "center", shapes: "circle", animation: "fadeIn", layout: "centered" },
-    { id: "fire-ice", name: "Fire & Ice", tags: ["Contrast", "Dynamic"], background: "linear-gradient(135deg, #ff0844 0%, #ffb199 50%, #00d4ff 100%)", color: "#ffffff", accent: "#ffd700", font: "Montserrat", titleAlign: "center", shapes: "line", animation: "zoomIn", layout: "centered" },
-    { id: "royal-navy", name: "Royal Navy", tags: ["Classic", "Professional"], background: "#001f3f", color: "#ffffff", accent: "#c9a961", font: "Playfair Display", titleAlign: "left", shapes: "rect", animation: "flyIn", layout: "sidebar" },
-    { id: "mint-fresh", name: "Mint Fresh", tags: ["Clean", "Cool"], background: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)", color: "#2d3436", accent: "#00b894", font: "Raleway", titleAlign: "left", shapes: "none", animation: "fadeIn", layout: "standard" },
-    { id: "golden-hour", name: "Golden Hour", tags: ["Warm", "Sunset"], background: "linear-gradient(135deg, #fdc830 0%, #f37335 100%)", color: "#ffffff", accent: "#2d3436", font: "Poppins", titleAlign: "center", shapes: "circle", animation: "zoomIn", layout: "centered" },
-    { id: "slate-modern", name: "Slate Modern", tags: ["Neutral", "Tech"], background: "#475569", color: "#f1f5f9", accent: "#06b6d4", font: "Lora", titleAlign: "left", shapes: "rect", animation: "flyIn", layout: "split" },
-    { id: "berry-blast", name: "Berry Blast", tags: ["Playful", "Energetic"], background: "linear-gradient(135deg, #8e2de2 0%, #4a00e0 100%)", color: "#ffffff", accent: "#ff6b9d", font: "Raleway", titleAlign: "center", shapes: "blob", animation: "zoomIn", layout: "centered" },
-    { id: "urban-concrete", name: "Urban Concrete", tags: ["Industrial", "Modern"], background: "#2c3e50", color: "#ecf0f1", accent: "#e67e22", font: "Montserrat", titleAlign: "left", shapes: "rect", animation: "flyIn", layout: "split" },
-    { id: "tropical-paradise", name: "Tropical Paradise", tags: ["Vibrant", "Summer"], background: "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)", color: "#ffffff", accent: "#fff200", font: "Poppins", titleAlign: "center", shapes: "blob", animation: "zoomIn", layout: "centered" },
-    { id: "vintage-paper", name: "Vintage Paper", tags: ["Classic", "Retro"], background: "#f4e8d0", color: "#3e2723", accent: "#8b4513", font: "Lora", titleAlign: "center", shapes: "none", animation: "fadeIn", layout: "centered" },
-    { id: "neon-tokyo", name: "Neon Tokyo", tags: ["Urban", "Futuristic"], background: "#1a1a1a", color: "#ffffff", accent: "#ff006e", font: "Montserrat", titleAlign: "left", shapes: "line", animation: "zoomIn", layout: "sidebar" },
-    { id: "peachy-keen", name: "Peachy Keen", tags: ["Soft", "Friendly"], background: "linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 50%, #fab1a0 100%)", color: "#2d3436", accent: "#d63031", font: "Poppins", titleAlign: "center", shapes: "circle", animation: "fadeIn", layout: "centered" },
-    { id: "sapphire-nights", name: "Sapphire Nights", tags: ["Elegant", "Luxury"], background: "linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)", color: "#ffffff", accent: "#ffd700", font: "Raleway", titleAlign: "center", shapes: "line", animation: "zoomIn", layout: "centered" },
-    { id: "matcha-cream", name: "Matcha Cream", tags: ["Organic", "Calm"], background: "linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%)", color: "#2d4a2b", accent: "#1b5e20", font: "Lora", titleAlign: "center", shapes: "blob", animation: "fadeIn", layout: "centered" },
-    { id: "crimson-power", name: "Crimson Power", tags: ["Bold", "Strong"], background: "linear-gradient(135deg, #c31432 0%, #240b36 100%)", color: "#ffffff", accent: "#ffd700", font: "Montserrat", titleAlign: "left", shapes: "rect", animation: "flyIn", layout: "split" },
-    { id: "sky-high", name: "Sky High", tags: ["Airy", "Fresh"], background: "linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%)", color: "#ffffff", accent: "#1e3a8a", font: "Poppins", titleAlign: "center", shapes: "circle", animation: "zoomIn", layout: "centered" },
-    { id: "chocolate-truffle", name: "Chocolate Truffle", tags: ["Rich", "Warm"], background: "#3e2723", color: "#efebe9", accent: "#d4a574", font: "Lora", titleAlign: "center", shapes: "line", animation: "fadeIn", layout: "centered" },
-    { id: "digital-wave", name: "Digital Wave", tags: ["Tech", "Dynamic"], background: "linear-gradient(135deg, #4776e6 0%, #8e54e9 100%)", color: "#ffffff", accent: "#00f5ff", font: "Raleway", titleAlign: "left", shapes: "line", animation: "flyIn", layout: "sidebar" },
-    { id: "blush-rose", name: "Blush Rose", tags: ["Romantic", "Delicate"], background: "linear-gradient(135deg, #ffeef8 0%, #ffe0f0 50%, #ffd1e8 100%)", color: "#4a1942", accent: "#c2185b", font: "Poppins", titleAlign: "center", shapes: "blob", animation: "fadeIn", layout: "centered" },
-    { id: "aurora-borealis", name: "Aurora Borealis", tags: ["Mystical", "Gradient"], background: "linear-gradient(135deg, #00c6ff 0%, #0072ff 50%, #7b2cbf 100%)", color: "#ffffff", accent: "#00ffff", font: "Raleway", titleAlign: "center", shapes: "circle", animation: "zoomIn", layout: "centered" },
-    { id: "desert-sunset", name: "Desert Sunset", tags: ["Warm", "Natural"], background: "linear-gradient(135deg, #ff6a00 0%, #ee0979 50%, #ff6a00 100%)", color: "#ffffff", accent: "#fff5e1", font: "Lora", titleAlign: "center", shapes: "blob", animation: "fadeIn", layout: "centered" },
-    { id: "midnight-ocean", name: "Midnight Ocean", tags: ["Deep", "Mysterious"], background: "linear-gradient(135deg, #0a192f 0%, #1e3a5f 50%, #2e5266 100%)", color: "#a8dadc", accent: "#00d4ff", font: "Montserrat", titleAlign: "left", shapes: "line", animation: "flyIn", layout: "sidebar" },
-    { id: "neon-gradient", name: "Neon Gradient", tags: ["Electric", "Modern"], background: "linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #4facfe 100%)", color: "#ffffff", accent: "#ffff00", font: "Poppins", titleAlign: "center", shapes: "circle", animation: "zoomIn", layout: "centered" },
-    { id: "charcoal-elegance", name: "Charcoal Elegance", tags: ["Sophisticated", "Dark"], background: "#36454f", color: "#e8e8e8", accent: "#b8860b", font: "Playfair Display", titleAlign: "center", shapes: "line", animation: "fadeIn", layout: "centered" },
-    { id: "cosmic-purple", name: "Cosmic Purple", tags: ["Space", "Vibrant"], background: "linear-gradient(135deg, #5b247a 0%, #1bcedf 100%)", color: "#ffffff", accent: "#ff6ec7", font: "Outfit", titleAlign: "left", shapes: "circle", animation: "zoomIn", layout: "split" },
-    { id: "terracotta-dream", name: "Terracotta Dream", tags: ["Earthy", "Warm"], background: "linear-gradient(135deg, #e07a5f 0%, #f2cc8f 100%)", color: "#3d405b", accent: "#81b29a", font: "Lora", titleAlign: "center", shapes: "blob", animation: "fadeIn", layout: "centered" },
-    { id: "electric-teal", name: "Electric Teal", tags: ["Fresh", "Bold"], background: "linear-gradient(135deg, #00b4db 0%, #0083b0 100%)", color: "#ffffff", accent: "#ffeb3b", font: "Montserrat", titleAlign: "left", shapes: "rect", animation: "flyIn", layout: "sidebar" },
-    { id: "velvet-noir", name: "Velvet Noir", tags: ["Luxury", "Dark"], background: "#1c1c1c", color: "#d4af37", accent: "#8b0000", font: "Playfair Display", titleAlign: "center", shapes: "line", animation: "zoomIn", layout: "centered" },
-    { id: "sunrise-gradient", name: "Sunrise Gradient", tags: ["Bright", "Optimistic"], background: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)", color: "#2d3436", accent: "#d63031", font: "Poppins", titleAlign: "center", shapes: "circle", animation: "fadeIn", layout: "centered" },
-    { id: "forest-mist", name: "Forest Mist", tags: ["Nature", "Serene"], background: "linear-gradient(135deg, #134e5e 0%, #71b280 50%, #a8e6cf 100%)", color: "#ffffff", accent: "#ffd700", font: "Lora", titleAlign: "center", shapes: "blob", animation: "fadeIn", layout: "centered" },
-    { id: "magenta-pop", name: "Magenta Pop", tags: ["Bold", "Creative"], background: "linear-gradient(135deg, #ff0099 0%, #493240 100%)", color: "#ffffff", accent: "#00ffff", font: "Raleway", titleAlign: "left", shapes: "rect", animation: "flyIn", layout: "split" },
-    { id: "pearl-white", name: "Pearl White", tags: ["Clean", "Minimal"], background: "#f8f9fa", color: "#212529", accent: "#6c757d", font: "Inter", titleAlign: "left", shapes: "none", animation: "fadeIn", layout: "standard" },
-    { id: "amber-glow", name: "Amber Glow", tags: ["Warm", "Inviting"], background: "linear-gradient(135deg, #ff9a56 0%, #ff6a88 50%, #feca57 100%)", color: "#2d3436", accent: "#d63031", font: "Montserrat", titleAlign: "center", shapes: "circle", animation: "zoomIn", layout: "centered" },
-    { id: "indigo-night", name: "Indigo Night", tags: ["Deep", "Professional"], background: "linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%)", color: "#ffffff", accent: "#fbbf24", font: "Playfair Display", titleAlign: "center", shapes: "line", animation: "zoomIn", layout: "centered" }
+    // === ⚡ NEXT-GEN FUTURISTIC & DEEP TECH ===
+    { id: "quantum-flux", name: "Quantum Flux 2090", tags: ["Futuristic", "Quantum", "Deep Tech"], background: "radial-gradient(ellipse at 80% 20%, #1e1035 0%, #080614 60%, #03000a 100%)", color: "#f0f4fc", accent: "#00f5d4", font: "Space Grotesk", titleAlign: "left", shapes: "matrix-grid", animation: "zoomIn", layout: "bento" },
+    { id: "spatial-visionos", name: "Spatial VisionOS", tags: ["VisionOS", "Spatial Glass", "Next-Gen"], background: "linear-gradient(145deg, #182032 0%, #0d1322 50%, #15102a 100%)", color: "#ffffff", accent: "#38bdf8", font: "Plus Jakarta Sans", titleAlign: "center", shapes: "glass-refract", animation: "fadeIn", layout: "bento" },
+    { id: "cyber-matrix", name: "Cyber Matrix HUD", tags: ["Cyberpunk", "HUD", "High-Contrast"], background: "#050811", color: "#e2f1ff", accent: "#00ffcc", font: "JetBrains Mono", titleAlign: "left", shapes: "neon-frame", animation: "flyIn", layout: "diagram" },
+    { id: "neural-synapse", name: "Neural Synapse Bio-AI", tags: ["Futuristic", "Neural AI", "Biotech"], background: "radial-gradient(circle at 15% 85%, #064e3b 0%, #022c22 45%, #01140e 100%)", color: "#ecfdf5", accent: "#a3e635", font: "Syne", titleAlign: "left", shapes: "circuit-lines", animation: "zoomIn", layout: "split" },
+    { id: "obsidian-stealth", name: "Obsidian Stealth X", tags: ["Luxury", "Futuristic", "Precision"], background: "linear-gradient(135deg, #0f1319 0%, #080b0f 50%, #040608 100%)", color: "#f1f5f9", accent: "#f59e0b", font: "Space Grotesk", titleAlign: "center", shapes: "cyber-grid", animation: "fadeIn", layout: "centered" },
+    { id: "solar-nebula", name: "Solar Nebula Orbit", tags: ["Futuristic", "Cosmic", "Hyperglow"], background: "radial-gradient(circle at 75% 25%, #431407 0%, #1c0a00 45%, #070200 100%)", color: "#fff7ed", accent: "#ff6b00", font: "Outfit", titleAlign: "left", shapes: "orbital-rings", animation: "zoomIn", layout: "kpi" },
+    { id: "chromatic-studio", name: "Chromatic Studio Pro", tags: ["VisionOS", "Keynote", "Minimal Luxe"], background: "linear-gradient(135deg, #11141c 0%, #090c12 100%)", color: "#ffffff", accent: "#818cf8", font: "Plus Jakarta Sans", titleAlign: "left", shapes: "glow-mesh", animation: "fadeIn", layout: "bento" },
+    { id: "editorial-avant-garde", name: "A24 Avant-Garde Studio", tags: ["Editorial", "Swiss", "Typography"], background: "#f7f6f2", color: "#111111", accent: "#e63946", font: "Syne", titleAlign: "left", shapes: "matrix-grid", animation: "fadeIn", layout: "split" },
+    { id: "liquid-mercury", name: "Liquid Mercury Titanium", tags: ["Futuristic", "Metallic", "Sleek"], background: "linear-gradient(135deg, #1e2430 0%, #0e1219 50%, #141923 100%)", color: "#f8fafc", accent: "#67e8f9", font: "Space Grotesk", titleAlign: "left", shapes: "geometric-wire", animation: "zoomIn", layout: "standard" },
+    { id: "dark-matter-void", name: "Dark Matter Horizon", tags: ["Futuristic", "Cosmic", "Deep Space"], background: "radial-gradient(circle at 50% 50%, #16082f 0%, #080314 55%, #000000 100%)", color: "#f5f3ff", accent: "#c084fc", font: "Syne", titleAlign: "center", shapes: "orbital-rings", animation: "zoomIn", layout: "centered" },
+    { id: "synthwave-outrun", name: "Synthwave Horizon '84", tags: ["Cyberpunk", "80s Outrun", "Neon"], background: "linear-gradient(180deg, #1e0836 0%, #3b0764 45%, #0f051d 100%)", color: "#fdf4ff", accent: "#f43f5e", font: "Outfit", titleAlign: "left", shapes: "hologram-scan", animation: "flyIn", layout: "diagram" },
+    { id: "oled-hyper-laser", name: "OLED Pure Hyper-Laser", tags: ["Cyberpunk", "OLED Pure", "High-Contrast"], background: "#000000", color: "#ffffff", accent: "#00ff66", font: "JetBrains Mono", titleAlign: "left", shapes: "neon-frame", animation: "fadeIn", layout: "kpi" },
+    { id: "glacial-spec", name: "Glacial Spec Alpha", tags: ["VisionOS", "Clean", "Nordic Ice"], background: "linear-gradient(135deg, #0b1928 0%, #050d18 50%, #0d1e32 100%)", color: "#e0f2fe", accent: "#38bdf8", font: "Plus Jakarta Sans", titleAlign: "left", shapes: "geometric-wire", animation: "fadeIn", layout: "bento" },
+    { id: "kinetic-bauhaus", name: "Kinetic Neo-Bauhaus", tags: ["Editorial", "Architectural", "Bold"], background: "#1a1a1e", color: "#fefefe", accent: "#ff3366", font: "Syne", titleAlign: "left", shapes: "matrix-grid", animation: "flyIn", layout: "split" },
+    { id: "abyss-bioluminescence", name: "Abyss Bioluminescence", tags: ["Futuristic", "Oceanic", "Glowing Teal"], background: "radial-gradient(ellipse at bottom, #042f2e 0%, #021a1a 45%, #010c0e 100%)", color: "#ccfbf1", accent: "#2dd4bf", font: "Space Grotesk", titleAlign: "center", shapes: "glow-mesh", animation: "zoomIn", layout: "centered" },
+    { id: "carbon-monolith", name: "Carbon Monolith Spec", tags: ["Cyberpunk", "Defense Grid", "Matte Carbon"], background: "#0c0e12", color: "#e2e8f0", accent: "#10b981", font: "JetBrains Mono", titleAlign: "left", shapes: "cyber-borders", animation: "fadeIn", layout: "diagram" },
+    { id: "hyper-gradient-aura", name: "Hyper-Gradient Web3 Aura", tags: ["VisionOS", "Web3", "Ultra-Gradient"], background: "linear-gradient(135deg, #130026 0%, #290045 40%, #00122e 100%)", color: "#ffffff", accent: "#ec4899", font: "Outfit", titleAlign: "center", shapes: "glass-refract", animation: "zoomIn", layout: "bento" },
+    { id: "tokyo-high-voltage", name: "Tokyo 2088 High-Voltage", tags: ["Cyberpunk", "Neo Tokyo", "Electric Amber"], background: "#08090d", color: "#f8fafc", accent: "#facc15", font: "Space Grotesk", titleAlign: "left", shapes: "neon-frame", animation: "flyIn", layout: "kpi" },
+    { id: "astral-quartz", name: "Astral Quartz Crystalline", tags: ["Luxury", "Prismatic", "Cosmic"], background: "linear-gradient(135deg, #1b1028 0%, #0c0817 50%, #150f24 100%)", color: "#faf5ff", accent: "#e879f9", font: "Playfair Display", titleAlign: "center", shapes: "geometric-wire", animation: "zoomIn", layout: "centered" },
+    { id: "hyper-blueprint", name: "CAD Technical Blueprint", tags: ["Cyberpunk", "Technical CAD", "Engineering"], background: "#081730", color: "#dbeafe", accent: "#60a5fa", font: "JetBrains Mono", titleAlign: "left", shapes: "matrix-grid", animation: "fadeIn", layout: "diagram" },
+    { id: "eclipse-gold", name: "Eclipse Sovereign Gold", tags: ["Luxury", "Sovereign", "Private Wealth"], background: "radial-gradient(circle at top right, #241c0b 0%, #0f0c05 50%, #050402 100%)", color: "#fefce8", accent: "#fbbf24", font: "Playfair Display", titleAlign: "center", shapes: "orbital-rings", animation: "zoomIn", layout: "centered" },
+    { id: "classified-dossier", name: "Classified Intel Dossier", tags: ["Cyberpunk", "Intelligence", "Security Black"], background: "#07080a", color: "#f1f5f9", accent: "#ef4444", font: "JetBrains Mono", titleAlign: "left", shapes: "cyber-borders", animation: "fadeIn", layout: "split" },
+    { id: "prism-silicon", name: "Silicon Frontier Prism", tags: ["Futuristic", "Hardware", "Semiconductor"], background: "linear-gradient(135deg, #09131f 0%, #040911 50%, #0c1c2e 100%)", color: "#f0fdfa", accent: "#14b8a6", font: "Space Grotesk", titleAlign: "left", shapes: "circuit-lines", animation: "zoomIn", layout: "bento" },
+    { id: "supernova-crimson", name: "Supernova Crimson Noir", tags: ["Luxury", "Dramatic", "Crimson Dark"], background: "radial-gradient(circle at 80% 20%, #450a0a 0%, #1a0303 50%, #080101 100%)", color: "#fff1f2", accent: "#fb7185", font: "Syne", titleAlign: "left", shapes: "glow-mesh", animation: "zoomIn", layout: "split" },
+    { id: "radical-lime-vortex", name: "Radical Electric Vortex", tags: ["Futuristic", "Radical Tech", "Hyperlime"], background: "#070a08", color: "#f7fee7", accent: "#84cc16", font: "Plus Jakarta Sans", titleAlign: "left", shapes: "hologram-scan", animation: "flyIn", layout: "bento" },
+    { id: "hyperspace-warp", name: "Hyperspace Warp Terminal", tags: ["Futuristic", "Starship HUD", "Warp Beam"], background: "radial-gradient(circle at center, #111e3b 0%, #050b18 60%, #01040a 100%)", color: "#eff6ff", accent: "#38bdf8", font: "JetBrains Mono", titleAlign: "left", shapes: "matrix-grid", animation: "zoomIn", layout: "diagram" },
+
+    // === 💎 CLASSIC & CONTEMPORARY MASTERPIECES ===
+    { id: "swiss-international", name: "Swiss International", tags: ["Editorial", "Professional", "Grid", "Clean"], background: "#ffffff", color: "#000000", accent: "#ff0000", font: "Arial", titleAlign: "left", shapes: "rect", animation: "fadeIn", layout: "split" },
+    { id: "executive-dark", name: "Executive Dark", tags: ["Luxury", "Premium", "Business"], background: "#121212", color: "#e0e0e0", accent: "#d4af37", font: "Playfair Display", titleAlign: "center", shapes: "line", animation: "zoomIn", layout: "centered" },
+    { id: "tech-minimal", name: "Tech Minimal", tags: ["Clean", "Modern", "Startup"], background: "#f3f4f6", color: "#111827", accent: "#2563eb", font: "Inter", titleAlign: "left", shapes: "none", animation: "flyIn", layout: "sidebar" },
+    { id: "modern-dark", name: "Modern Dark", tags: ["Luxury", "Tech", "Sleek"], background: "#1e1e2e", color: "#ffffff", accent: "#89b4fa", font: "Montserrat", titleAlign: "left", shapes: "circle", animation: "fadeIn", layout: "standard" },
+    { id: "corporate-blue", name: "Corporate Blue", tags: ["Clean", "Business", "Professional"], background: "#ffffff", color: "#1e3a8a", accent: "#3b82f6", font: "Arial", titleAlign: "center", shapes: "rect", animation: "zoomIn", layout: "standard" },
+    { id: "glassmorphism", name: "Glassmorphism Original", tags: ["VisionOS", "Trendy", "Modern"], background: "linear-gradient(135deg, #2dd4bf 0%, #3b82f6 100%)", color: "#ffffff", accent: "#ffffff", font: "Outfit", titleAlign: "center", shapes: "circle", animation: "zoomIn", layout: "centered" },
+    { id: "neo-brutalism", name: "Neo-Brutalism Bold", tags: ["Editorial", "Bold", "Edgy"], background: "#f0f0f0", color: "#000000", accent: "#ff0055", font: "Poppins", titleAlign: "left", shapes: "rect", animation: "flyIn", layout: "split" },
+    { id: "nature-calm", name: "Nature Calm Organic", tags: ["Clean", "Organic", "Peaceful"], background: "#ecfccb", color: "#14532d", accent: "#65a30d", font: "Playfair Display", titleAlign: "center", shapes: "blob", animation: "fadeIn", layout: "centered" },
+    { id: "cyberpunk", name: "Cyberpunk Neon", tags: ["Cyberpunk", "Futuristic", "Neon"], background: "#09090b", color: "#22d3ee", accent: "#f472b6", font: "Outfit", titleAlign: "right", shapes: "line", animation: "zoomIn", layout: "standard" },
+    { id: "gradient-mesh", name: "Gradient Mesh Spectrum", tags: ["VisionOS", "Vibrant", "Modern"], background: "linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)", color: "#ffffff", accent: "#ffd700", font: "Raleway", titleAlign: "center", shapes: "circle", animation: "fadeIn", layout: "centered" },
+    { id: "midnight-aurora", name: "Midnight Aurora", tags: ["Luxury", "Elegant", "Dark"], background: "linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%)", color: "#e0f2f1", accent: "#00e5ff", font: "Playfair Display", titleAlign: "left", shapes: "line", animation: "zoomIn", layout: "split" },
+    { id: "sunset-vibes", name: "Sunset Vibes Warm", tags: ["Clean", "Warm", "Creative"], background: "linear-gradient(135deg, #ff6b6b 0%, #feca57 50%, #ee5a6f 100%)", color: "#ffffff", accent: "#2d3436", font: "Lora", titleAlign: "center", shapes: "blob", animation: "fadeIn", layout: "centered" },
+    { id: "ocean-breeze", name: "Ocean Breeze Slate", tags: ["Clean", "Calm", "Professional"], background: "linear-gradient(135deg, #667db6 0%, #0082c8 50%, #667db6 100%)", color: "#ffffff", accent: "#ffd89b", font: "Montserrat", titleAlign: "left", shapes: "rect", animation: "flyIn", layout: "sidebar" },
+    { id: "neon-dreams", name: "Neon Dreams Electric", tags: ["Cyberpunk", "Bold", "Electric"], background: "#0a0e27", color: "#ffffff", accent: "#00ff88", font: "Raleway", titleAlign: "left", shapes: "line", animation: "zoomIn", layout: "split" },
+    { id: "minimalist-pro", name: "Minimalist Pro Classic", tags: ["Clean", "Simple"], background: "#fafafa", color: "#2c3e50", accent: "#e74c3c", font: "Arial", titleAlign: "left", shapes: "none", animation: "fadeIn", layout: "standard" },
+    { id: "retro-wave", name: "Retro Wave Synth", tags: ["Cyberpunk", "80s", "Vibrant"], background: "linear-gradient(135deg, #2b5876 0%, #4e4376 100%)", color: "#ff6ec7", accent: "#00d4ff", font: "Poppins", titleAlign: "center", shapes: "circle", animation: "zoomIn", layout: "centered" },
+    { id: "forest-green", name: "Forest Green Deep", tags: ["Clean", "Natural", "Earthy"], background: "#1b4332", color: "#d8f3dc", accent: "#95d5b2", font: "Playfair Display", titleAlign: "center", shapes: "blob", animation: "fadeIn", layout: "centered" },
+    { id: "rose-gold-luxury", name: "Rose Gold Luxury", tags: ["Luxury", "Premium", "Elegant"], background: "#2d2d2d", color: "#f5f5f5", accent: "#e8b4b8", font: "Playfair Display", titleAlign: "center", shapes: "line", animation: "zoomIn", layout: "centered" },
+    { id: "arctic-frost", name: "Arctic Frost Blue", tags: ["Clean", "Cool", "Modern"], background: "linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%)", color: "#2c3e50", accent: "#3498db", font: "Inter", titleAlign: "left", shapes: "rect", animation: "flyIn", layout: "sidebar" },
+    { id: "warm-autumn", name: "Warm Autumn Glow", tags: ["Clean", "Cozy", "Seasonal"], background: "linear-gradient(135deg, #f77062 0%, #fe5196 100%)", color: "#ffffff", accent: "#ffd89b", font: "Montserrat", titleAlign: "center", shapes: "circle", animation: "fadeIn", layout: "centered" },
+    { id: "holographic-dream", name: "Holographic Dream Spec", tags: ["VisionOS", "Futuristic", "Iridescent"], background: "linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%)", color: "#ffffff", accent: "#ffeb3b", font: "Lora", titleAlign: "center", shapes: "circle", animation: "zoomIn", layout: "centered" },
+    { id: "midnight-gold", name: "Midnight Gold Sovereign", tags: ["Luxury", "Premium"], background: "#1a1a2e", color: "#eee", accent: "#ffd700", font: "Playfair Display", titleAlign: "center", shapes: "line", animation: "fadeIn", layout: "centered" },
+    { id: "electric-purple", name: "Electric Purple Wave", tags: ["Futuristic", "Bold", "Modern"], background: "linear-gradient(135deg, #6a11cb 0%, #2575fc 100%)", color: "#ffffff", accent: "#00ffff", font: "Raleway", titleAlign: "left", shapes: "rect", animation: "flyIn", layout: "split" },
+    { id: "cherry-blossom", name: "Cherry Blossom Bloom", tags: ["Clean", "Delicate", "Spring"], background: "linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)", color: "#5d4037", accent: "#d81b60", font: "Playfair Display", titleAlign: "center", shapes: "blob", animation: "fadeIn", layout: "centered" },
+    { id: "deep-space", name: "Deep Space Cosmos", tags: ["Futuristic", "Cosmic", "Dark"], background: "linear-gradient(135deg, #000000 0%, #0f2027 50%, #203a43 100%)", color: "#ffffff", accent: "#9c27b0", font: "Montserrat", titleAlign: "left", shapes: "circle", animation: "zoomIn", layout: "sidebar" },
+    { id: "emerald-elegance", name: "Emerald Elegance Noir", tags: ["Luxury", "Sophisticated", "Green"], background: "linear-gradient(135deg, #134e5e 0%, #71b280 100%)", color: "#ffffff", accent: "#ffd700", font: "Playfair Display", titleAlign: "center", shapes: "line", animation: "fadeIn", layout: "centered" },
+    { id: "coral-reef", name: "Coral Reef Tropics", tags: ["Clean", "Vibrant", "Tropical"], background: "linear-gradient(135deg, #ff9a56 0%, #ff6a88 50%, #ff99ac 100%)", color: "#ffffff", accent: "#2d3436", font: "Poppins", titleAlign: "left", shapes: "blob", animation: "flyIn", layout: "split" },
+    { id: "monochrome-chic", name: "Monochrome Chic Editorial", tags: ["Editorial", "Minimal", "B&W"], background: "#ffffff", color: "#000000", accent: "#333333", font: "Arial", titleAlign: "left", shapes: "rect", animation: "fadeIn", layout: "sidebar" },
+    { id: "lavender-mist", name: "Lavender Mist Soft", tags: ["Clean", "Soft", "Pastel"], background: "linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)", color: "#4a4a4a", accent: "#7b2cbf", font: "Lora", titleAlign: "center", shapes: "circle", animation: "fadeIn", layout: "centered" },
+    { id: "fire-ice", name: "Fire & Ice Dynamic", tags: ["Futuristic", "Contrast", "Dynamic"], background: "linear-gradient(135deg, #ff0844 0%, #ffb199 50%, #00d4ff 100%)", color: "#ffffff", accent: "#ffd700", font: "Montserrat", titleAlign: "center", shapes: "line", animation: "zoomIn", layout: "centered" },
+    { id: "royal-navy", name: "Royal Navy Executive", tags: ["Luxury", "Classic", "Professional"], background: "#001f3f", color: "#ffffff", accent: "#c9a961", font: "Playfair Display", titleAlign: "left", shapes: "rect", animation: "flyIn", layout: "sidebar" },
+    { id: "mint-fresh", name: "Mint Fresh Cool", tags: ["Clean", "Cool"], background: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)", color: "#2d3436", accent: "#00b894", font: "Raleway", titleAlign: "left", shapes: "none", animation: "fadeIn", layout: "standard" },
+    { id: "golden-hour", name: "Golden Hour Glow", tags: ["Clean", "Warm", "Sunset"], background: "linear-gradient(135deg, #fdc830 0%, #f37335 100%)", color: "#ffffff", accent: "#2d3436", font: "Poppins", titleAlign: "center", shapes: "circle", animation: "zoomIn", layout: "centered" },
+    { id: "slate-modern", name: "Slate Modern Architectural", tags: ["Editorial", "Neutral", "Tech"], background: "#475569", color: "#f1f5f9", accent: "#06b6d4", font: "Lora", titleAlign: "left", shapes: "rect", animation: "flyIn", layout: "split" },
+    { id: "berry-blast", name: "Berry Blast Energetic", tags: ["VisionOS", "Playful", "Energetic"], background: "linear-gradient(135deg, #8e2de2 0%, #4a00e0 100%)", color: "#ffffff", accent: "#ff6b9d", font: "Raleway", titleAlign: "center", shapes: "blob", animation: "zoomIn", layout: "centered" },
+    { id: "urban-concrete", name: "Urban Concrete Brutal", tags: ["Editorial", "Industrial", "Modern"], background: "#2c3e50", color: "#ecf0f1", accent: "#e67e22", font: "Montserrat", titleAlign: "left", shapes: "rect", animation: "flyIn", layout: "split" },
+    { id: "tropical-paradise", name: "Tropical Paradise Summer", tags: ["Clean", "Vibrant", "Summer"], background: "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)", color: "#ffffff", accent: "#fff200", font: "Poppins", titleAlign: "center", shapes: "blob", animation: "zoomIn", layout: "centered" },
+    { id: "vintage-paper", name: "Vintage Paper Archive", tags: ["Editorial", "Classic", "Retro"], background: "#f4e8d0", color: "#3e2723", accent: "#8b4513", font: "Lora", titleAlign: "center", shapes: "none", animation: "fadeIn", layout: "centered" },
+    { id: "neon-tokyo", name: "Neon Tokyo 2077", tags: ["Cyberpunk", "Urban", "Futuristic"], background: "#1a1a1a", color: "#ffffff", accent: "#ff006e", font: "Montserrat", titleAlign: "left", shapes: "line", animation: "zoomIn", layout: "sidebar" },
+    { id: "peachy-keen", name: "Peachy Keen Delight", tags: ["Clean", "Soft", "Friendly"], background: "linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 50%, #fab1a0 100%)", color: "#2d3436", accent: "#d63031", font: "Poppins", titleAlign: "center", shapes: "circle", animation: "fadeIn", layout: "centered" },
+    { id: "sapphire-nights", name: "Sapphire Nights Luxury", tags: ["Luxury", "Elegant", "Premium"], background: "linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)", color: "#ffffff", accent: "#ffd700", font: "Raleway", titleAlign: "center", shapes: "line", animation: "zoomIn", layout: "centered" },
+    { id: "matcha-cream", name: "Matcha Cream Zen", tags: ["Clean", "Organic", "Calm"], background: "linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%)", color: "#2d4a2b", accent: "#1b5e20", font: "Lora", titleAlign: "center", shapes: "blob", animation: "fadeIn", layout: "centered" },
+    { id: "crimson-power", name: "Crimson Power Bold", tags: ["Luxury", "Bold", "Strong"], background: "linear-gradient(135deg, #c31432 0%, #240b36 100%)", color: "#ffffff", accent: "#ffd700", font: "Montserrat", titleAlign: "left", shapes: "rect", animation: "flyIn", layout: "split" },
+    { id: "sky-high", name: "Sky High Horizon", tags: ["Clean", "Airy", "Fresh"], background: "linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%)", color: "#ffffff", accent: "#1e3a8a", font: "Poppins", titleAlign: "center", shapes: "circle", animation: "zoomIn", layout: "centered" },
+    { id: "chocolate-truffle", name: "Chocolate Truffle Warm", tags: ["Luxury", "Rich", "Warm"], background: "#3e2723", color: "#efebe9", accent: "#d4a574", font: "Lora", titleAlign: "center", shapes: "line", animation: "fadeIn", layout: "centered" },
+    { id: "digital-wave", name: "Digital Wave Hyper", tags: ["Futuristic", "Tech", "Dynamic"], background: "linear-gradient(135deg, #4776e6 0%, #8e54e9 100%)", color: "#ffffff", accent: "#00f5ff", font: "Raleway", titleAlign: "left", shapes: "line", animation: "flyIn", layout: "sidebar" },
+    { id: "blush-rose", name: "Blush Rose Bloom", tags: ["Clean", "Romantic", "Delicate"], background: "linear-gradient(135deg, #ffeef8 0%, #ffe0f0 50%, #ffd1e8 100%)", color: "#4a1942", accent: "#c2185b", font: "Poppins", titleAlign: "center", shapes: "blob", animation: "fadeIn", layout: "centered" },
+    { id: "aurora-borealis", name: "Aurora Borealis Pulse", tags: ["VisionOS", "Mystical", "Gradient"], background: "linear-gradient(135deg, #00c6ff 0%, #0072ff 50%, #7b2cbf 100%)", color: "#ffffff", accent: "#00ffff", font: "Raleway", titleAlign: "center", shapes: "circle", animation: "zoomIn", layout: "centered" },
+    { id: "desert-sunset", name: "Desert Sunset Mirage", tags: ["Clean", "Warm", "Natural"], background: "linear-gradient(135deg, #ff6a00 0%, #ee0979 50%, #ff6a00 100%)", color: "#ffffff", accent: "#fff5e1", font: "Lora", titleAlign: "center", shapes: "blob", animation: "fadeIn", layout: "centered" },
+    { id: "midnight-ocean", name: "Midnight Ocean Trench", tags: ["Luxury", "Deep", "Mysterious"], background: "linear-gradient(135deg, #0a192f 0%, #1e3a5f 50%, #2e5266 100%)", color: "#a8dadc", accent: "#00d4ff", font: "Montserrat", titleAlign: "left", shapes: "line", animation: "flyIn", layout: "sidebar" },
+    { id: "neon-gradient", name: "Neon Gradient Flux", tags: ["Cyberpunk", "Electric", "Modern"], background: "linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #4facfe 100%)", color: "#ffffff", accent: "#ffff00", font: "Poppins", titleAlign: "center", shapes: "circle", animation: "zoomIn", layout: "centered" },
+    { id: "charcoal-elegance", name: "Charcoal Elegance Slate", tags: ["Luxury", "Sophisticated", "Dark"], background: "#36454f", color: "#e8e8e8", accent: "#b8860b", font: "Playfair Display", titleAlign: "center", shapes: "line", animation: "fadeIn", layout: "centered" },
+    { id: "cosmic-purple", name: "Cosmic Purple Nebula", tags: ["VisionOS", "Space", "Vibrant"], background: "linear-gradient(135deg, #5b247a 0%, #1bcedf 100%)", color: "#ffffff", accent: "#ff6ec7", font: "Outfit", titleAlign: "left", shapes: "circle", animation: "zoomIn", layout: "split" },
+    { id: "terracotta-dream", name: "Terracotta Dream Earth", tags: ["Editorial", "Earthy", "Warm"], background: "linear-gradient(135deg, #e07a5f 0%, #f2cc8f 100%)", color: "#3d405b", accent: "#81b29a", font: "Lora", titleAlign: "center", shapes: "blob", animation: "fadeIn", layout: "centered" },
+    { id: "electric-teal", name: "Electric Teal Matrix", tags: ["Cyberpunk", "Fresh", "Bold"], background: "linear-gradient(135deg, #00b4db 0%, #0083b0 100%)", color: "#ffffff", accent: "#ffeb3b", font: "Montserrat", titleAlign: "left", shapes: "rect", animation: "flyIn", layout: "sidebar" },
+    { id: "velvet-noir", name: "Velvet Noir Sovereign", tags: ["Luxury", "Dark"], background: "#1c1c1c", color: "#d4af37", accent: "#8b0000", font: "Playfair Display", titleAlign: "center", shapes: "line", animation: "zoomIn", layout: "centered" },
+    { id: "sunrise-gradient", name: "Sunrise Gradient Dawn", tags: ["Clean", "Bright", "Optimistic"], background: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)", color: "#2d3436", accent: "#d63031", font: "Poppins", titleAlign: "center", shapes: "circle", animation: "fadeIn", layout: "centered" },
+    { id: "forest-mist", name: "Forest Mist Serene", tags: ["Clean", "Nature", "Serene"], background: "linear-gradient(135deg, #134e5e 0%, #71b280 50%, #a8e6cf 100%)", color: "#ffffff", accent: "#ffd700", font: "Lora", titleAlign: "center", shapes: "blob", animation: "fadeIn", layout: "centered" },
+    { id: "magenta-pop", name: "Magenta Pop Electric", tags: ["Cyberpunk", "Bold", "Creative"], background: "linear-gradient(135deg, #ff0099 0%, #493240 100%)", color: "#ffffff", accent: "#00ffff", font: "Raleway", titleAlign: "left", shapes: "rect", animation: "flyIn", layout: "split" },
+    { id: "pearl-white", name: "Pearl White Minimal", tags: ["Clean", "Minimal"], background: "#f8f9fa", color: "#212529", accent: "#6c757d", font: "Inter", titleAlign: "left", shapes: "none", animation: "fadeIn", layout: "standard" },
+    { id: "amber-glow", name: "Amber Glow Hearth", tags: ["Clean", "Warm", "Inviting"], background: "linear-gradient(135deg, #ff9a56 0%, #ff6a88 50%, #feca57 100%)", color: "#2d3436", accent: "#d63031", font: "Montserrat", titleAlign: "center", shapes: "circle", animation: "zoomIn", layout: "centered" },
+    { id: "indigo-night", name: "Indigo Night Royal", tags: ["Luxury", "Deep", "Professional"], background: "linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%)", color: "#ffffff", accent: "#fbbf24", font: "Playfair Display", titleAlign: "center", shapes: "line", animation: "zoomIn", layout: "centered" }
 ];
 
 // Curated Icon Library for Picker
@@ -681,6 +710,15 @@ function setupEventListeners() {
     presenterTimerToggle.addEventListener('click', togglePresenterTimer);
     presenterTimerReset.addEventListener('click', resetPresenterTimer);
 
+    // Theme Category Filter Buttons
+    document.querySelectorAll('.theme-filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.theme-filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderTemplates(btn.dataset.filter || 'all');
+        });
+    });
+
     // Global Keybindings
     document.addEventListener('keydown', (e) => {
         if (presenterOverlay.style.display !== 'none') {
@@ -890,19 +928,28 @@ function handleAccentColorChange(e) {
 // 🖥️ STUDIO PREVIEW & INLINE EDITING
 // ==========================================
 
-function renderTemplates() {
+let currentThemeFilter = 'all';
+
+function renderTemplates(filter = 'all') {
+    currentThemeFilter = filter;
     const grid = document.getElementById('templates-grid');
+    if (!grid) return;
     grid.innerHTML = '';
     
-    themes.forEach(theme => {
+    const filteredThemes = filter === 'all' 
+        ? themes 
+        : themes.filter(t => t.tags.some(tag => tag.toLowerCase().includes(filter.toLowerCase())));
+
+    filteredThemes.forEach(theme => {
         const card = document.createElement('div');
         card.className = 'template-card';
+        if (state.currentTheme?.id === theme.id) card.classList.add('active-theme');
         card.onclick = () => applyTheme(theme);
         
         card.innerHTML = `
             <div class="template-preview" style="background: ${theme.background}; color: ${theme.color}; font-family: ${theme.font};">
                 <div style="text-align: ${theme.titleAlign}; width: 100%;">
-                    <h4 style="color: ${theme.accent}; margin-bottom: 0.4rem; font-size: 1rem;">${theme.name}</h4>
+                    <h4 style="color: ${theme.accent}; margin-bottom: 0.4rem; font-size: 0.95rem; font-weight: 700;">${theme.name}</h4>
                     <div style="height: 3px; width: 36px; background: ${theme.accent}; display: inline-block; border-radius: 2px;"></div>
                 </div>
             </div>
@@ -1206,15 +1253,110 @@ function createSlideElement(theme) {
 
 function getDecorativeElement(theme, isSmall = false) {
     if (theme.shapes === 'none') return '';
+    const accent = theme.accent || '#6366f1';
+    const themeId = (theme.id || 'theme') + (isSmall ? '-sm' : '');
+
+    if (theme.shapes === 'matrix-grid' || theme.shapes === 'cyber-grid') {
+        return `
+        <div class="deco-layer hud-matrix-deco" style="pointer-events: none;">
+            <svg class="hud-grid-svg" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="grid-pattern-${themeId}" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="${accent}" stroke-width="0.75" stroke-opacity="0.1" />
+                        <circle cx="40" cy="40" r="1.5" fill="${accent}" fill-opacity="0.25" />
+                    </pattern>
+                </defs>
+                <rect width="800" height="450" fill="url(#grid-pattern-${themeId})" />
+                <path d="M 25 35 L 45 35 L 45 15 M 755 35 L 775 35 L 775 55 M 25 415 L 45 415 L 45 435 M 755 435 L 775 435 L 775 415" fill="none" stroke="${accent}" stroke-width="1.8" stroke-opacity="0.6" />
+                <line x1="710" y1="30" x2="745" y2="30" stroke="${accent}" stroke-width="2" stroke-opacity="0.7" />
+                <text x="690" y="420" font-family="'JetBrains Mono', monospace" font-size="9" fill="${accent}" fill-opacity="0.5" letter-spacing="1.5">SYS.SPEC // 2090</text>
+            </svg>
+        </div>`;
+    }
+
+    if (theme.shapes === 'neon-frame' || theme.shapes === 'cyber-borders') {
+        return `
+        <div class="deco-layer cyber-borders-deco" style="pointer-events: none;">
+            <div class="cyber-corner top-left" style="border-color: ${accent}"></div>
+            <div class="cyber-corner top-right" style="border-color: ${accent}"></div>
+            <div class="cyber-corner bottom-left" style="border-color: ${accent}"></div>
+            <div class="cyber-corner bottom-right" style="border-color: ${accent}"></div>
+            <span class="cyber-tag" style="color: ${accent}; border-color: ${accent}66;">LIVE // SPEC</span>
+        </div>`;
+    }
+
+    if (theme.shapes === 'orbital-rings') {
+        return `
+        <div class="deco-layer orbital-rings-deco" style="pointer-events: none;">
+            <svg class="orbital-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="200" cy="200" r="170" fill="none" stroke="${accent}" stroke-width="1.5" stroke-dasharray="6 8" stroke-opacity="0.22" class="spin-slow" />
+                <circle cx="200" cy="200" r="115" fill="none" stroke="${accent}" stroke-width="1.2" stroke-opacity="0.3" />
+                <circle cx="200" cy="200" r="60" fill="${accent}" fill-opacity="0.06" />
+                <circle cx="370" cy="200" r="4.5" fill="${accent}" />
+                <circle cx="85" cy="200" r="3" fill="#ffffff" stroke="${accent}" stroke-width="1" />
+            </svg>
+        </div>`;
+    }
+
+    if (theme.shapes === 'circuit-lines') {
+        return `
+        <div class="deco-layer circuit-lines-deco" style="pointer-events: none;">
+            <svg class="circuit-svg" viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 40 280 L 140 280 L 210 210 L 370 210 L 420 160 L 470 160" fill="none" stroke="${accent}" stroke-width="1.8" stroke-opacity="0.3" />
+                <path d="M 210 210 L 250 170 L 320 170" fill="none" stroke="${accent}" stroke-width="1.2" stroke-dasharray="4 4" stroke-opacity="0.25" />
+                <circle cx="40" cy="280" r="3.5" fill="${accent}" />
+                <circle cx="370" cy="210" r="3.5" fill="${accent}" />
+                <circle cx="470" cy="160" r="4" fill="${accent}" />
+            </svg>
+        </div>`;
+    }
+
+    if (theme.shapes === 'glow-mesh') {
+        return `
+        <div class="deco-layer glow-mesh-deco" style="pointer-events: none;">
+            <div class="ambient-orb orb-1" style="background: ${accent};"></div>
+            <div class="ambient-orb orb-2" style="background: ${accent};"></div>
+        </div>`;
+    }
+
+    if (theme.shapes === 'glass-refract') {
+        return `
+        <div class="deco-layer glass-refract-deco" style="pointer-events: none;">
+            <div class="prism-wedge" style="border-color: ${accent}44; box-shadow: 0 0 35px ${accent}22;"></div>
+            <div class="specular-line" style="background: linear-gradient(90deg, transparent, ${accent}88, transparent);"></div>
+        </div>`;
+    }
+
+    if (theme.shapes === 'geometric-wire') {
+        return `
+        <div class="deco-layer geometric-wire-deco" style="pointer-events: none;">
+            <svg class="wire-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="150,30 270,100 270,230 150,290 30,230 30,100" fill="none" stroke="${accent}" stroke-width="1.5" stroke-opacity="0.28" transform="rotate(15 150 150)" />
+                <polygon points="150,70 230,120 230,200 150,240 70,200 70,120" fill="${accent}" fill-opacity="0.04" stroke="${accent}" stroke-width="1" stroke-dasharray="4 3" stroke-opacity="0.35" />
+                <circle cx="150" cy="30" r="3.5" fill="${accent}" />
+                <circle cx="270" cy="100" r="3.5" fill="${accent}" />
+            </svg>
+        </div>`;
+    }
+
+    if (theme.shapes === 'hologram-scan') {
+        return `
+        <div class="deco-layer hologram-scan-deco" style="pointer-events: none;">
+            <div class="laser-scanline" style="background: linear-gradient(180deg, transparent, ${accent}33, transparent);"></div>
+            <div class="scan-ticks" style="color: ${accent}; font-family: 'JetBrains Mono', monospace;">0101 // SCAN</div>
+        </div>`;
+    }
+
+    // Standard shapes
     let style = '';
     if (theme.shapes === 'circle') {
-        style = `position: absolute; bottom: -40px; right: -40px; width: ${isSmall ? '130px' : '240px'}; height: ${isSmall ? '130px' : '240px'}; background: ${theme.accent}; border-radius: 50%; opacity: 0.18; pointer-events: none;`;
+        style = `position: absolute; bottom: -40px; right: -40px; width: ${isSmall ? '130px' : '240px'}; height: ${isSmall ? '130px' : '240px'}; background: ${accent}; border-radius: 50%; opacity: 0.18; pointer-events: none;`;
     } else if (theme.shapes === 'rect') {
-        style = `position: absolute; top: 0; left: 0; width: 14px; height: 100%; background: ${theme.accent};`;
+        style = `position: absolute; top: 0; left: 0; width: 14px; height: 100%; background: ${accent}; pointer-events: none;`;
     } else if (theme.shapes === 'line') {
-        style = `position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); width: 85%; height: 3px; background: ${theme.accent}; opacity: 0.6;`;
+        style = `position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); width: 85%; height: 3px; background: ${accent}; opacity: 0.6; pointer-events: none;`;
     } else if (theme.shapes === 'blob') {
-        style = `position: absolute; top: -30px; right: -30px; width: ${isSmall ? '120px' : '200px'}; height: ${isSmall ? '120px' : '200px'}; background: ${theme.accent}; border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; opacity: 0.15; pointer-events: none;`;
+        style = `position: absolute; top: -30px; right: -30px; width: ${isSmall ? '120px' : '200px'}; height: ${isSmall ? '120px' : '200px'}; background: ${accent}; border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; opacity: 0.15; pointer-events: none;`;
     }
     return `<div style="${style}"></div>`;
 }
